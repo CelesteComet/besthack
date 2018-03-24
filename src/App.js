@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// Import our components:
+import VideoBox from './components/VideoBox';
+import ChatBox from './components/ChatBox';
+// -------
+
 class LambdaDemo extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +44,10 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <LambdaDemo/>
+        <div className="App2">
+          <VideoBox />
+          <ChatBox />
+        </div>
       </div>
     );
   }
