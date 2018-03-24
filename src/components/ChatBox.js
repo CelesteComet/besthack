@@ -4,7 +4,7 @@ export default class ChatBox extends React.Component {
   render() {
     return(
       <div className="chat-box">
-        chat box
+        
       </div>
     );
   }
