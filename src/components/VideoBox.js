@@ -1,9 +1,10 @@
 import React from 'react';
+import '../styles/video_box.css';
 
 export default class VideoBox extends React.Component {
   render() {
     return(
-      <div>
+      <div className="video-box">
         <div className="main-video-box">
           Main Stream Video
         </div>
