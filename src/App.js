@@ -5,7 +5,7 @@ import './App.css';
 // Import our components:
 import VideoBox from './components/VideoBox';
 import ChatBox from './components/ChatBox';
-// -------
+// ------------
 
 class LambdaDemo extends Component {
   constructor(props) {
