@@ -6,6 +6,7 @@
     "netlify-lambda": "^0.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-draggable": "^3.0.5",
     "react-scripts": "1.1.1"
   },
   "scripts": {

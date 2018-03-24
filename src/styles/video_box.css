@@ -1,5 +1,19 @@
-.main-video-box {
+.video-box {
   background: silver;
   width: 80%;
-  height: 400px;
+  position: relative;
+}
+
+.main-video {
+  background: green;
+  padding-bottom: 56.2%;
+}
+
+.popup-video {
+  position: absolute;
+  width: 20%;
+  height: 30%;
+  background: yellow;
+  top: 10px;
+  right: 10px;
 }
