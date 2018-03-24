@@ -1,3 +1,14 @@
 .chatbox {
-  width: 33vw;
+  width: 350px;
+  background: #ccc;
+}
+
+@media (max-width: 900px), (orientation: portrait) {
+  main {
+    flex-direction: column;
+  }
+
+  .chatbox {
+    width: 100vw;
+  }
 }
