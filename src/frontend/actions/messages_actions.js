@@ -13,14 +13,18 @@ export const fetchMessages = () => dispatch =>
     });
 
 
+// export const createMessage = (authorName, body) => dispatch =>
+//   MessagesApiUtil.createMessage(authorName, body)
+//     .then(payload => dispatch(receiveMessage(payload)))
+//     .fail((xhr, status, errorThrown) => {
+//       console.log("Error: " + errorThrown);
+//       console.log("Status: " + status);
+//       console.dir(xhr);
+//     });
+
 export const createMessage = (authorName, body) => dispatch =>
   MessagesApiUtil.createMessage(authorName, body)
-    .then(payload => dispatch(receiveMessage(payload)))
-    .fail((xhr, status, errorThrown) => {
-      console.log("Error: " + errorThrown);
-      console.log("Status: " + status);
-      console.dir(xhr);
-    });
+    .then(() => dispatch(receiveMessage({author_name: authorName, body: body})))
 
 const receiveAllMessages = payload => ({
   type: RECEIVE_ALL_MESSAGES,
