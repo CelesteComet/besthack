@@ -2,6 +2,7 @@ import React from 'react';
 import Draggable from 'react-draggable';
 import {connect} from 'react-redux';
 import {createSession} from 'opentok-react';
+import moment from 'moment';
 
 import Publisher from './Publisher';
 import Subscriber from './Subscriber';
@@ -40,17 +41,20 @@ class VideoBox extends React.Component {
   }
 
   raiseQuestion() {
-    firebase.database().ref(`queue/${this.props.currentUser}`).set({
-      name: this.props.currentUser
+    const timeInUnix = moment().unix();
+    firebase.database().ref(`queue/${timeInUnix}`).set({
+      name: this.props.currentUser,
+      time: timeInUnix
     });
     this.setState({inQueue: true});
   }
 
   updateSpeaker(nameId) {
+    if (!this.isHost()) return; // Will not do anything if NOT a host
+
     // Update Speaker in the backend: (Bruce)
     const { dispatch } = this.props;
     dispatch(updateSpeaker(nameId));
-
 
     // Send signal to other users to update redux store after we update speaker in the backend:
     this.sessionHelper.session.signal({
@@ -61,12 +65,29 @@ class VideoBox extends React.Component {
         console.log('Error sending signal:', error.name, error.message);
       }
     });
+
+    // Dequeue:
+    firebase.database().ref(`queue/${nameId}`).remove();
+  }
+
+  isHost() { // To check if a user is the host of this room session:
+    return (this.props.host === this.props.currentUser);
   }
 
   renderQuestionSection() {
-    const userToken = 10;
+    if (this.isHost()) return null; // dont render this if user is a host
     if (this.state.inQueue) {// already in the queue
-      return <div className="queue-wait-text"> You are in the Question Queue</div>;
+      let position;
+      Object.values(this.state.queue).forEach((user, idx) => {
+        if (user.name === this.props.currentUser) {
+          position = idx + 1;
+        }
+      });
+      return (
+        <div className="queue-wait-text">
+          You are position {position} in the Queue
+        </div>
+      );
     } else {
       return (
         <div className="question-button"
@@ -82,14 +103,23 @@ class VideoBox extends React.Component {
     //   return <div className=""><Publisher />;
     // }
     return <Publisher />;
+  // renderPopUp() {
+  //   if (this.props.speaker === "") {// if no speaker is allowed, dont show the pop up
+  //     return null;
+  //   } else {
+  //     return (
+  //       <Draggable bounds="parent">
+  //         <div className="popup-video">
+  //           <Subscriber />
+  //         </div>
+  //       </Draggable>
+  //     );
+  //   }
   }
 
   render() {
     const queue = Object.values(this.state.queue);
     const { host, currentUser } = this.props;
-    if ( host === currentUser) {
-      this.renderQuestionSection = () => {};
-    }
     return(
       <div className="video-box">
         <div className="main-video">
@@ -99,15 +129,18 @@ class VideoBox extends React.Component {
               <Subscriber />
             </div>
           </Draggable>
+          {/* <Publisher />
+          {this.renderPopUp()} */}
         </div>
         {this.renderQuestionSection()}
         <p>Queue (Total {queue.length})</p>
         <ul className="queue">
           {queue.slice(0,12).map((user, idx) => {
+            const timeAgo = moment.unix(user.time).fromNow();
             return (
               <li key={idx} className="queue-item"
                 onClick={(e) => this.updateSpeaker(user.name)}>
-                {user.userToken} {user.name}
+                {user.name} ({timeAgo})
               </li>
             );
           })}
@@ -120,7 +153,8 @@ class VideoBox extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser,
-    host: state.host.name
+    host: state.host.name,
+    speaker: state.speaker
   };
 };
 

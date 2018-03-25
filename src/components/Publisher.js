@@ -11,7 +11,7 @@ class Publisher extends React.Component {
       properties: {
         name: 'host',
         audioFallbackEnabled: false,
-        showControls: false,
+        showControls: true,
         publishVideo: true
       }
     };
@@ -46,7 +46,7 @@ class Publisher extends React.Component {
   endCall = (e) => {
     e.preventDefault();
     this.sessionHelper.disconnect();
-  
+
   }
 
   renderHost() {
@@ -72,7 +72,7 @@ class Publisher extends React.Component {
       <div className="publisher-container">
         <div className="video-buttons">
           <button onClick={this.handleClick}> Toggle Video </button>
-          <button onClick={this.endCall}> End Call </button>
+          <button style={{backgroundColor: 'red'}} onClick={this.endCall}> End Call </button>
         </div>
         {this.renderHost()}
       </div>

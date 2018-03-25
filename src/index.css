@@ -55,23 +55,42 @@ html {
   min-height: 100vh;
 } */
 
-html {
+html, body, #root, .App-container {
   height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  height: 100%;
+  font-family: inherit;
+}
+
+input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  padding: 5px 10px;
+  border-radius: 3px;
+
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.App-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* NAME ENTRY */
 
 .name-entry {
   display: flex;
-  margin-top: 300px;
-  border: 1px solid black;
   height: 400px;
   width: 600px;
   margin: 0 auto;
@@ -79,12 +98,23 @@ body {
   justify-content: center;
 }
 
+.name-entry button {
+  margin-left: 10px;
+  background: var(--blue);
+  color: #fff;
+}
+
 .name-entry div {
   margin: 0 auto;
 }
 
-.townhall-about{
+.townhall-about {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.div-home {
+  display: flex;
+  justify-content: center;
 }

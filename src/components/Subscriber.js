@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {OTPublisher, OTSubscriber, createSession} from 'opentok-react';
 
-
 class Subscriber extends React.Component {
 
   constructor(props) {

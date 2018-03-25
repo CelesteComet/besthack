@@ -25,19 +25,18 @@ class App extends Component {
   render() {
     const { currentUser } = this.props;
     return (
-      <div>
-        { currentUser &&
-        <div className="App">
-          <div className="App2">
-            <VideoBox />
-            <ChatBox />
+      <div className="App-container">
+        {
+          currentUser &&
+          <div className="App">
+            <div className="App2">
+              <VideoBox />
+              <ChatBox />
+            </div>
           </div>
-        </div>
         }
 
         { !currentUser && <NameEntry /> }
-
-
       </div>
     );
   }
