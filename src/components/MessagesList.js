@@ -13,6 +13,8 @@ class MessagesList extends React.Component {
   componentDidMount() {
     this.props.fetchMessages().then(() => {
       this.setState({loading: false});
+      const list = document.querySelector('.chat-messages');
+      list.scrollTop = list.scrollHeight;
     })
   }
 
