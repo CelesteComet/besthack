@@ -5,11 +5,12 @@ class Subscriber extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { streams: [] };
+    this.state = { sessionId: "", streams: [] };
 
   }
 
   componentWillMount() {
+
     this.sessionHelper = createSession({
       apiKey: '46086882',
       sessionId: '2_MX40NjA4Njg4Mn5-MTUyMTkyNjUwMjA2MX5FL1JpeDdubzFqVnhXMG0zOGV2cmUyTDZ-fg',

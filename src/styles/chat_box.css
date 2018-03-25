@@ -1,5 +1,34 @@
-.chat-box {
-  background: blue;
-  width: 400px;
-  height: 100vh;
+.chatbox {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  padding: 20px;
+  background: #eee;
+}
+
+.chat-messages {
+  flex: 1 0 auto;
+  margin-bottom: 20px;
+}
+
+.chat-form {
+  flex: 0 0 auto;
+  align-self: flex-end;
+  width: 100%;
+}
+
+.chat-form > textarea {
+  width: 100%;
+  padding: 0.5rem;
+  resize: none;
+}
+
+@media (max-width: 900px), (orientation: portrait) {
+  main {
+    flex-direction: column;
+  }
+
+  .chatbox {
+    width: 100vw;
+  }
 }

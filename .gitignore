@@ -8,7 +8,7 @@
 
 # production
 /build
-/lambda
+
 
 # misc
 .DS_Store
@@ -16,11 +16,12 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # my own
-/src/lambda
-
+/yarn.lock
+/package-lock.json
