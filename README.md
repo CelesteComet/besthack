@@ -1,39 +1,115 @@
-This project is based on [Create React App](https://github.com/facebookincubator/create-react-app). (For more information about Create react App, check their full [documentation](https://github.com/facebookincubator/create-react-app#create-react-app).)
+# VidAMA
 
-The main addition is a new folder: `src/lambda`. Each JavaScript file in there will automatically be prepared for Lambda function deployment.
+### [AMA has never been easier.](https://github.com/CelesteComet/besthack) 
 
-As an example, we've included a small `src/lambda/hello.js` function, which will be deployed to `/.netlify/functions/hello`.
+Collaborative video conferencing and audience participation at the touch of the button.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify/create-react-app-lambda)
+![VidAMA](./docs/VidAMA.png "VidAMA Logo")
 
-## Babel/webpack compilation
+## Features
 
-All functions are compiled with webpack using the Babel Loader, so you can use modern JavaScript, import npm modules, etc., without any extra setup.
+Capture the essence of Reddit AMA and TedX on live video!
 
-## Local Development
+* Start a video chat room with a speaker(host) and audience members
+* Stream both the speaker and a nominated audience member
+* Live chat sidebar for audience to engage with each other
+* See who's queued up to stream-in a question
+* Audience can queue up to ask a question
+* Speaker can moderate queue to answer questions
 
-Before developing, clone the repository and run `yarn` from the root of the repo to install all dependencies.
+## Technologies
 
-### Run the functions dev server
+### React
+* Responsive Single Page App
+* Modular components
 
-From inside the project folder, run:
+### TokBox
+* manages multiple video streams of users
 
+```javascript
+handleSubmit = (e) => {
+    e.preventDefault();
+    let messageBody = this.state.value.trim()
+
+    if (messageBody) {
+      this.sessionHelper.session.signal({
+        type: 'msg',
+        data: `{"author_name": "${this.props.currentUser}", "body": "${messageBody}"}`,
+      }, (error) => {
+        if (error) {
+          console.log('Error sending signal:', error.name, error.message);
+        } else {
+          this.props.createMessage(this.props.currentUser, messageBody)
+            .then(() => {
+              const list = document.querySelector('.chat-messages');
+              list.scrollTop = list.scrollHeight;
+          });
+        }
+      });
+
+      e.target.value = '';
+      this.setState({ value: '' });
+    }
+  }
 ```
-yarn start:lambda
+
+### Netlify
+* Lambdas, used to abstract away interaction with API keys for security
+* Automatic deployment and serverless backend 
+
+```javascript
+// Lambda functions called using RESTful API endpoints.
+
+const axios = require('axios');
+const OpenTok = require('opentok');
+require('dotenv').config();
+
+const tokbox_key = process.env.TOKBOX_API_KEY;
+const tokbox_secret = process.env.TOKBOX_SECRET;
+
+export function handler(event, context, callback) {
+  var opentok = new OpenTok(tokbox_key, tokbox_secret);
+
+  opentok.createSession(function(err, session) {
+    if (err) {
+      return console.log(err);
+    } else {
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({payload: session.sessionId})
+      });
+    }
+  });
+}
 ```
 
-This will open a local server running at `http://localhost:9000` serving your Lambda functions, updating as you make changes in the `src/lambda` folder.
+### Hasura
+* Quick to build, easy to use backend
+* Stores and serves up:
+    * data of speakers and audience members for UI
+    * chat messages, powering live chat
 
-You can then access your functions directly at `http://localhost:9000/{function_name}`, but to access them with the app, you'll need to start the app dev server.
+```javascript
+// messages_api_util.js
 
-### Run the app dev server
-
-While the functions server is still running, open a new terminal tab and run:
-
+export const createMessage = (authorName, body) => 
+  $.ajax({
+    url: "https://data.absolve11.hasura-app.io/v1/query",
+    contentType: "application/json",
+    data: JSON.stringify({
+      "type": "insert",
+      "args": {
+        "table": "messages",
+        "objects": [
+            {
+              "author_name": `${authorName}`,
+              "body": `${body}`
+            }
+        ]
+      }
+    }),
+    type: "POST",
+    dataType: "json"
+  });
 ```
-yarn start
-```
 
-This will start the normal create-react-app dev server and open your app at `http://localhost:3000`.
-
-Local in-app requests to the relative path `/.netlify/functions/*` will automatically be proxied to the local functions dev server.
