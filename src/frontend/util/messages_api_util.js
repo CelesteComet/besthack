@@ -15,7 +15,6 @@ export const fetchMessages = () =>
       dataType: "json"
   });
 
-
 export const createMessage = (authorName, body) => 
   $.ajax({
     url: "https://data.absolve11.hasura-app.io/v1/query",
