@@ -62,7 +62,7 @@ class NameEntry extends Component {
               placeholder="Enter your name"
               onChange={this.handleChange}
             />
-          <button><i class="fas fa-arrow-right" aria-label="Submit"></i></button>
+          <button><i className="fas fa-arrow-right" aria-label="Submit"></i></button>
           </div>
 
           <div className="slidingVertical">
