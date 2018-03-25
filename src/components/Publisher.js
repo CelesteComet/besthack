@@ -9,7 +9,7 @@ class Publisher extends React.Component {
     this.state = {
       streams: [],
       properties: {
-        name: 'host',
+        name: 'tanloc',
         audioFallbackEnabled: false,
         showControls: true,
         publishVideo: true
