@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './styles/video_box.css';
+import './styles/chat_box.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
