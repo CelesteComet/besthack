@@ -28,9 +28,16 @@
 }
 
 .chat-messages li {
+  display: block;
+  width: 100%;
   margin: 1px 0;
-  /* display: flex; */
   word-break: break-all;
+  padding: 12px 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.chat-messages li:last-child {
+  border-bottom: none;
 }
 
 .message-author {
