@@ -1,15 +1,21 @@
 .chatbox {
   width: 350px;
+  padding: 20px;
   background: #eee;
 }
 
 .chat-messages {
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 .chat-form {
   width: 100%;
-  margin: 20px;
+}
+
+.chat-form > textarea {
+  width: 100%;
+  padding: 0.5rem;
+  resize: none;
 }
 
 @media (max-width: 900px), (orientation: portrait) {
