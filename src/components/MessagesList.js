@@ -35,9 +35,12 @@ class MessagesList extends React.Component {
       <ul className="chat-messages">
         {this.props.messages.map((message, idx) => (
           <li key={idx}>
-            {message.author_name}
-            {message.body}
-            {this.toLocalTime(message.timestamp)}
+            <div className="message-author">
+              {message.author_name}:
+            </div>
+            <div className="message-body">
+              {message.body}
+            </div>
           </li>
         ))}
       </ul>

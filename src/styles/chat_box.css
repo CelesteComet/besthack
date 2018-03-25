@@ -9,6 +9,20 @@
 .chat-messages {
   flex: 1 0 auto;
   margin-bottom: 20px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.chat-messages li {
+  margin: 1px 0;
+  display: flex;
+}
+
+.message-author {
+  margin-right: 2px;
 }
 
 .chat-form {
