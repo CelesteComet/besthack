@@ -18,9 +18,6 @@ class Subscriber extends React.Component {
       onStreamsUpdated: streams => { this.setState({ streams }); }
     });
 
-    this.properties = {
-      name: 'Bruce'
-    };
   }
 
   componentWillUnmount() {
@@ -31,6 +28,7 @@ class Subscriber extends React.Component {
     return (
       <div>
         {this.state.streams.map(stream => {
+          console.log(stream);
           return (
             <OTSubscriber
               key={stream.id}
