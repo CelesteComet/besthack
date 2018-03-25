@@ -20,10 +20,6 @@ class Subscriber extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-    this.sessionHelper.disconnect();
-  }
-
   render() {
     const { currentUser, speaker } = this.props;
     return (
@@ -48,7 +44,7 @@ class Subscriber extends React.Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.session.currentUser,
-    speaker: state.session.speaker,
+    speaker: state.speaker,
     token: state.session.token
   };
 };
