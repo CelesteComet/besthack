@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { OTSession, OTPublisher, OTStreams, OTSubscriber, createSession} from 'opentok-react';
+import {OTPublisher, createSession} from 'opentok-react';
 
 class Publisher extends React.Component {
 
