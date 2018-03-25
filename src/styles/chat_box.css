@@ -1,6 +1,10 @@
 .chatbox {
   width: 350px;
-  background: #ccc;
+  background: #eee;
+}
+
+.chat-form {
+  width: 100%;
 }
 
 @media (max-width: 900px), (orientation: portrait) {
