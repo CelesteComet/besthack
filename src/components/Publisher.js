@@ -11,7 +11,7 @@ class Publisher extends React.Component {
       properties: {
         name: 'host',
         audioFallbackEnabled: false,
-        showControls: false,
+        showControls: true,
         publishVideo: true
       }
     };
