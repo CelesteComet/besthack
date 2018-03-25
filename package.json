@@ -3,9 +3,16 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+
+    "jquery": "^3.3.1",
+    "axios": "^0.18.0",
+    "dotenv": "^5.0.1",
+=======
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",
     "jquery": "^3.3.1",
+>>>>>>> 1ec2d6c86498f1402cddc63cb6c9ade23058101e
     "netlify-lambda": "^0.3.0",
     "opentok": "^2.6.2",
     "opentok-react": "^0.7.0",
