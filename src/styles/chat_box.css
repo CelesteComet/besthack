@@ -21,11 +21,13 @@
 
 .chat-messages li {
   margin: 1px 0;
-  display: flex;
+  /* display: flex; */
+  word-break: break-all;
 }
 
 .message-author {
-  margin-right: 2px;
+  margin-right: 5px;
+  font-weight: 700;
 }
 
 .chat-form {
