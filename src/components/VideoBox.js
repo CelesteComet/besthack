@@ -7,6 +7,8 @@ import Publisher from './Publisher';
 import Subscriber from './Subscriber';
 import firebase from '../firebase/firebase.js';
 
+import { updateSpeaker } from '../frontend/actions/speakers_actions';
+
 class VideoBox extends React.Component {
   constructor() {
     super();
@@ -23,9 +25,9 @@ class VideoBox extends React.Component {
 
     this.sessionHelper.session.on('signal:speaker', function(event) {
       // This is when other user receive signal to update redux store when speaker changes:
-
-
-    });
+      const { dispatch } = this.props;
+      dispatch(updateSpeaker(event.data));
+    }.bind(this));
   }
 
   componentDidMount() {
@@ -37,20 +39,22 @@ class VideoBox extends React.Component {
   }
 
   raiseQuestion() {
-    firebase.database().ref(`queue/${this.props.currentUser.currentUser}`).set({
+    firebase.database().ref(`queue/${this.props.currentUser}`).set({
       name: this.props.currentUser.currentUser
     });
     this.setState({inQueue: true});
   }
 
-  updateSpeaker() {
+  updateSpeaker(nameId) {
     // Update Speaker in the backend: (Bruce)
+    const { dispatch } = this.props;
+    dispatch(updateSpeaker(nameId));
 
 
     // Send signal to other users to update redux store after we update speaker in the backend:
     this.sessionHelper.session.signal({
       type: 'speaker',
-      data: 'update'
+      data: nameId
     }, function(error) {
       if (error) {
         console.log('Error sending signal:', error.name, error.message);
@@ -90,7 +94,7 @@ class VideoBox extends React.Component {
           {queue.slice(0,12).map((user, idx) => {
             return (
               <li key={idx} className="queue-item"
-                onClick={(e) => this.updateSpeaker(e)}>
+                onClick={(e) => this.updateSpeaker(user.name)}>
                 {user.userToken} {user.name}
               </li>
             );
@@ -107,4 +111,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(VideoBox);
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(VideoBox);

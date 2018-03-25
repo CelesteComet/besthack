@@ -3,6 +3,7 @@ import {createSession} from 'opentok-react';
 import {createMessage} from '../frontend/actions/messages_actions';
 import { connect } from 'react-redux';
 
+
 class ChatForm extends React.Component {
   state = {
     value: ''

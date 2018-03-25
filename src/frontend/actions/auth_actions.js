@@ -4,7 +4,7 @@ export const SET_TOKEN = "SET_TOKEN";
 export const setCurrentUser = name => {
   return {
     type: SET_CURRENT_USER,
-    payload: { currentUser: name }
+    payload: name
   }  
 };
 
