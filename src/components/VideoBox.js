@@ -1,5 +1,7 @@
 import React from 'react';
 import Draggable from 'react-draggable';
+import Publisher from './Publisher';
+import Subscriber from './Subscriber';
 
 export default class VideoBox extends React.Component {
   render() {
@@ -10,11 +12,10 @@ export default class VideoBox extends React.Component {
           <p>Company/Organizer</p>
         </div>
         <div className="main-video">
-          Main Stream Video
+        <Publisher />
           <Draggable bounds="parent">
-            <div className="popup-video">
-              Pop up video
-            </div>
+
+              <Subscriber />
           </Draggable>
         </div>
       </div>
