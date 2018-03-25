@@ -40,7 +40,7 @@ class VideoBox extends React.Component {
 
   raiseQuestion() {
     firebase.database().ref(`queue/${this.props.currentUser}`).set({
-      name: this.props.currentUser.currentUser
+      name: this.props.currentUser
     });
     this.setState({inQueue: true});
   }
@@ -78,6 +78,10 @@ class VideoBox extends React.Component {
 
   render() {
     const queue = Object.values(this.state.queue);
+    const { host, currentUser } = this.props;
+    if ( host === currentUser) {
+      this.renderQuestionSection = () => {};
+    }
     return(
       <div className="video-box">
         <div className="main-video">
@@ -107,7 +111,8 @@ class VideoBox extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    host: state.host.name
   };
 };
 
