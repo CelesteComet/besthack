@@ -19,6 +19,10 @@ export default class ChatForm extends React.Component {
       console.log('receive signal');
       console.log(event);
     });
+
+    this.sessionHelper.session.on('signal:speakerChange', function(event) {
+      
+    });
   }
 
   componentDidMount() {
