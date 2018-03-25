@@ -18,25 +18,25 @@ import NameEntry from './components/NameEntry';
 class App extends Component {
 
   componentDidMount() {
-
+    const { getSpeaker } = this.props;
+    getSpeaker();
   }
 
   render() {
     const { currentUser } = this.props;
     return (
-      <div>
-        { currentUser &&
-        <div className="App">
-          <div className="App2">
-            <VideoBox />
-            <ChatBox />
+      <div className="container">
+        {
+          currentUser &&
+          <div className="App">
+            <div className="App2">
+              <VideoBox />
+              <ChatBox />
+            </div>
           </div>
-        </div>
         }
 
         { !currentUser && <NameEntry /> }
-
-
       </div>
     );
   }
@@ -48,7 +48,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchSpeaker: () => { return dispatch(fetchSpeaker()) },
+    getSpeaker: () => { dispatch(fetchSpeaker()) },
     setToken: token => { dispatch(setToken(token)) }
   };
 };
