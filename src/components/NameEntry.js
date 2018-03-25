@@ -66,9 +66,9 @@ class NameEntry extends Component {
           </div>
 
           <div className="slidingVertical">
-            <h3> Attend virtual lectures </h3>
-            <h3> Schedule a Doctor's appointment </h3>
-            <h3> Attend Global conferences </h3>
+            <h3>Attend virtual lectures</h3>
+            <h3>Host public AMA's</h3>
+            <h3>Collaborate. Interact. Share.</h3>
           </div>
 
           <div className="townhall-about">

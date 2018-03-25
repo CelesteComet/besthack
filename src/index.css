@@ -66,7 +66,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: inherit;
-  overflow: hidden;
+
 }
 
 input {
@@ -100,6 +100,8 @@ button:hover {
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+
 }
 
 .name-entry button {
@@ -116,35 +118,43 @@ button:hover {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-top: 25px;
 }
 
 .slidingVertical{
   padding-top: 10px;
   text-align: center;
+  /* display: inline; */
 }
 
 
+
+
 .slidingVertical h3{
-	animation: topToBottom 12.5s linear infinite 0s;
-	-ms-animation: topToBottom 12.5s linear infinite 0s;
-	-webkit-animation: topToBottom 12.5s linear infinite 0s;
+	animation: leftToRight 12.5s linear infinite 0s;
+	-ms-animation: leftToRight 12.5s linear infinite 0s;
+	-webkit-animation: leftToRight 12.5s linear infinite 0s;
 	color: black;
 	opacity: 0;
 	overflow: hidden;
-	/* position: absolute; */
+	position: absolute;
+  left: 25%;
 }
 .slidingVertical h3:nth-child(2){
 	animation-delay: 2.5s;
 	-ms-animation-delay: 2.5s;
 	-webkit-animation-delay: 2.5s;
+  left: 30%;
+
 }
 .slidingVertical h3:nth-child(3){
 	animation-delay: 5s;
 	-ms-animation-delay: 5s;
 	-webkit-animation-delay: 5s;
+  left: 22%;
 }
 
-@-moz-keyframes topToBottom{
+/* @-moz-keyframes topToBottom{
 	0% { opacity: 0; }
 	5% { opacity: 0; -moz-transform: translateY(-50px); }
 	10% { opacity: 1; -moz-transform: translateY(0px); }
@@ -168,6 +178,34 @@ button:hover {
 	10% { opacity: 1; -ms-transform: translateY(0px); }
 	25% { opacity: 1; -ms-transform: translateY(0px); }
 	30% { opacity: 0; -ms-transform: translateY(50px); }
+	80% { opacity: 0; }
+	100% { opacity: 0; }
+} */
+
+@-moz-keyframes leftToRight{
+	0% { opacity: 0; }
+	5% { opacity: 0; -moz-transform: translateX(-50px); }
+	10% { opacity: 1; -moz-transform: translateX(0px); }
+	25% { opacity: 1; -moz-transform: translateX(0px); }
+	30% { opacity: 0; -moz-transform: translateX(50px); }
+	80% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-webkit-keyframes leftToRight{
+	0% { opacity: 0; }
+	5% { opacity: 0; -webkit-transform: translateX(-50px); }
+	10% { opacity: 1; -webkit-transform: translateX(0px); }
+	25% { opacity: 1; -webkit-transform: translateX(0px); }
+	30% { opacity: 0; -webkit-transform: translateX(50px); }
+	80% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-ms-keyframes leftToRight{
+	0% { opacity: 0; }
+	5% { opacity: 0; -ms-transform: translateX(-50px); }
+	10% { opacity: 1; -ms-transform: translateX(0px); }
+	25% { opacity: 1; -ms-transform: translateX(0px); }
+	30% { opacity: 0; -ms-transform: translateX(50px); }
 	80% { opacity: 0; }
 	100% { opacity: 0; }
 }
