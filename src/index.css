@@ -69,7 +69,14 @@ body {
 /* NAME ENTRY */
 
 .name-entry {
+  display: flex;
+  margin-top: 300px;
   border: 1px solid black;
   height: 400px;
-  width: 300px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.name-entry div {
+  margin: 0 auto;
 }

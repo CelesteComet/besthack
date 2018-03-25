@@ -28,8 +28,10 @@ class NameEntry extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className='name-entry'>
-        <input type='text' onChange={this.handleChange} />
-        <button>Enter Name</button>
+        <div>
+          <input type='text' onChange={this.handleChange} />
+          <button>Enter Name</button>
+        </div>
       </form>
     );
   }

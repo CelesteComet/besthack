@@ -52,7 +52,6 @@ class App extends Component {
           <div className="App2">
             <VideoBox />
             <ChatBox />
-
           </div>
         </div>}
         { !currentUser && <NameEntry /> }
