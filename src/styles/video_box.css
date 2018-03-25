@@ -1,4 +1,5 @@
 .video-box {
+  grid-area: video;
   background: silver;
   width: 100%;
 }

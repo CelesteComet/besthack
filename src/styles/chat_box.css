@@ -1,4 +1,5 @@
 .chatbox {
+  grid-area: chat;
   display: flex;
   flex-direction: column;
   width: 350px;
@@ -44,7 +45,7 @@
     flex-direction: column;
   }
 
-  .chatbox {
+  /* .chatbox {
     width: 100vw;
-  }
+  } */
 }
