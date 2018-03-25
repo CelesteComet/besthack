@@ -5,13 +5,15 @@ import './styles/video_box.css';
 import './styles/chat_box.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers/rootReducer';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 let store;
 
-store = createStore(rootReducer);
+store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 window.store = store;
 
