@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-// Import Actions 
+// Import Actions
 import { fetchSpeaker } from './frontend/actions/speakers_actions';
 
 // Import React-Redux
@@ -47,7 +47,7 @@ class App extends Component {
     console.log(currentUser)
     return (
       <div>
-        { currentUser && 
+        { currentUser &&
         <div className="App">
           <div className="App2">
             <VideoBox />
