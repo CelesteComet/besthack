@@ -4,7 +4,7 @@ export const RECEIVE_SPEAKER = "RECEIVE_SPEAKER";
 
 export const fetchSpeaker = () => dispatch =>
   SpeakersApiUtil.fetchSpeaker()
-    .then(payload => dispatch(receiveSpeaker(payload.returning[0])))
+    .then(payload => dispatch(receiveSpeaker(payload[0])))
     .fail((xhr, status, errorThrown) => {
       console.log("Error: " + errorThrown);
       console.log("Status: " + status);

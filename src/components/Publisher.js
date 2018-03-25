@@ -9,7 +9,7 @@ class Publisher extends React.Component {
     this.state = {
       streams: [],
       properties: {
-        name: 'host',
+        name: this.props.currentUser,
         audioFallbackEnabled: false,
         showControls: true,
         publishVideo: true
@@ -50,6 +50,21 @@ class Publisher extends React.Component {
   }
 
   renderHost() {
+    let style;
+    const { currentUser, host } = this.props;
+    // if (currentUser === host) {
+    //   style = {'display': 'block'};
+    // } else {
+    //   style = {'display': 'none'};
+    // }
+
+    return (
+      <div>
+        <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+
+      </div>
+
+    );
     // if (this.props.currentUser === this.props.host) {
     //   return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
     // }
@@ -63,9 +78,13 @@ class Publisher extends React.Component {
     //         properties={{name: stream.name}}
     //       />
     //     )
+    //   } else {
+    //     <div style={style}>
+    //       <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+    //     </div>
     //   }
     // })
-    return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+    // return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
 
   }
 
