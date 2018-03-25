@@ -66,14 +66,14 @@ class NameEntry extends Component {
           </div>
 
           <div className="slidingVertical">
-            <h3>Attend virtual lectures</h3>
-            <h3>Host public AMA's</h3>
-            <h3>Collaborate. Interact. Share.</h3>
+            <h3>host public AMAs</h3>
+            <h3>attend virtual lectures</h3>
+            <h3>collaborate, interact, share</h3>
           </div>
 
           <div className="townhall-about">
-            <img src="https://res.cloudinary.com/dbtepon6n/image/upload/c_scale,w_189/v1521964232/TownHall.svg" alt="main-logo" />
-            <p> TownHall is a multi-purpose video streaming application. </p>
+            <img src="http://res.cloudinary.com/dbtepon6n/image/upload/v1522012714/logo.svg" alt="main-logo" />
+            <p>VidAMA allows you to </p>
           </div>
         </form>
 
