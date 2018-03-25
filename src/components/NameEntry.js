@@ -27,9 +27,6 @@ class NameEntry extends Component {
     e.preventDefault();
     const { setCurrentUser } = this.props;
     setCurrentUser(this.state.name);
-<<<<<<< HEAD
-
-
 
     // check if you are the host
 
@@ -50,38 +47,10 @@ class NameEntry extends Component {
     var token = myOpenTok.generateToken(sessionId, tokenOptions);
     window.token = token;
     setToken(token);
-
-
-=======
->>>>>>> e0d37238c6a68591311dc77323154fc08da37f79
   }
 
   render() {
     return (
-<<<<<<< HEAD
-      <div className="div-home">
-
-        <form onSubmit={this.handleSubmit} className='name-entry'>
-
-          <div>
-            <input type='text' onChange={this.handleChange} />
-            <button>Enter Name</button>
-          </div>
-          <br/>
-
-          <div className="townhall-about">
-            <img src="https://res.cloudinary.com/dbtepon6n/image/upload/c_scale,w_189/v1521964232/TownHall.svg" alt="main-logo" />
-            <p> TownHall is a multi-purpose video streaming application. </p>
-          </div>
-
-        </form>
-
-      </div>
-
-
-
-
-=======
       <form onSubmit={this.handleSubmit} className="name-entry">
         <div className="name-entry-input">
           <input
@@ -97,7 +66,6 @@ class NameEntry extends Component {
           <p> TownHall is a multi-purpose video streaming application. </p>
         </div>
       </form>
->>>>>>> e0d37238c6a68591311dc77323154fc08da37f79
     );
   }
 }
