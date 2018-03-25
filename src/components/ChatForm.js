@@ -1,7 +1,9 @@
 import React from 'react';
 import {createSession} from 'opentok-react';
+import {createMessage} from '../frontend/actions/messages_actions';
+import { connect } from 'react-redux';
 
-export default class ChatForm extends React.Component {
+class ChatForm extends React.Component {
   state = {
     value: ''
   }
@@ -16,8 +18,8 @@ export default class ChatForm extends React.Component {
     });
 
     this.sessionHelper.session.on('signal:msg', function(event) {
-      console.log('receive signal');
-      console.log(event);
+      // console.log('receive signal');
+      // console.log(event);
     });
 
     this.sessionHelper.session.on('signal:speakerChange', function(event) {
@@ -51,24 +53,25 @@ export default class ChatForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    let messageBody = this.state.value.trim()
 
-    if (this.state.value.trim()) {
-      console.log(this.state.value.trim());
+    if (messageBody) {
+      // console.log(this.state.value.trim());
+
+      this.sessionHelper.session.signal({
+        type: 'msg',
+        data: messageBody
+      }, (error) => {
+        if (error) {
+          console.log('Error sending signal:', error.name, error.message);
+        } else {
+          this.props.createMessage(this.props.currentUser, messageBody);
+        }
+      });
+
       e.target.value = '';
       this.setState({ value: '' });
     }
-
-    this.sessionHelper.session.signal({
-      type: 'msg',
-      data: 'foo'
-    }, function(error) {
-    if (error) {
-      console.log('Error sending signal:', error.name, error.message);
-    } else {
-      
-    }
-
-  });
   }
 
   handleChange = (e) => {
@@ -88,3 +91,17 @@ export default class ChatForm extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.session.currentUser.currentUser,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createMessage: (authorName, body) => dispatch(createMessage(authorName, body))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatForm);

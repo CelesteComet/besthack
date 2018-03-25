@@ -1,3 +1,4 @@
+const $ = require('jquery');
 
 export const fetchMessages = () => 
   $.ajax({
