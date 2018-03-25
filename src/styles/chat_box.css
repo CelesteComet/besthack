@@ -41,11 +41,7 @@
 }
 
 @media (max-width: 900px), (orientation: portrait) {
-  main {
-    flex-direction: column;
-  }
-
-  /* .chatbox {
+  .chatbox {
     width: 100vw;
-  } */
+  }
 }
