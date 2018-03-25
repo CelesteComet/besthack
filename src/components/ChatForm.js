@@ -18,10 +18,10 @@ class ChatForm extends React.Component {
       onStreamsUpdated: streams => { this.setState({ streams }); }
     });
 
-    this.sessionHelper.session.on('signal:msg', function(event) {
-      // console.log('receive signal');
-      // console.log(event);
-    });
+    // this.sessionHelper.session.on('signal:msg', function(event) {
+    //   // console.log('receive signal');
+    //   // console.log(event);
+    // });
   }
 
   componentDidMount() {
@@ -62,6 +62,7 @@ class ChatForm extends React.Component {
         if (error) {
           console.log('Error sending signal:', error.name, error.message);
         } else {
+          console.log(`currentuser: ${this.props.currentUser}`);
           this.props.createMessage(this.props.currentUser, messageBody);
         }
       });
@@ -91,7 +92,7 @@ class ChatForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.session.currentUser.currentUser,
+    currentUser: state.session.currentUser
   };
 };
 
