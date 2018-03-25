@@ -50,27 +50,40 @@ class Publisher extends React.Component {
   }
 
   renderHost() {
+    let style;
+    const { currentUser, host } = this.props;
+    if (currentUser === host) {
+      style = {'display': 'block'};
+    } else {
+      style = {'display': 'none'};
+    }
+
     return (
-      
-      <div>
+      <div style={style}>
         <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+
       </div>
+
     );
     // if (this.props.currentUser === this.props.host) {
     //   return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
     // }
-    // this.state.streams.forEach(stream => {
-    //   if (stream.name === this.props.host) {
-    //     return (
-    //       <OTSubscriber
-    //         key={stream.id}
-    //         session={this.sessionHelper.session}
-    //         stream={stream}
-    //         properties={{name: stream.name}}
-    //       />
-    //     )
-    //   }
-    // })
+    this.state.streams.forEach(stream => {
+      if (stream.name === this.props.host) {
+        return (
+          <OTSubscriber
+            key={stream.id}
+            session={this.sessionHelper.session}
+            stream={stream}
+            properties={{name: stream.name}}
+          />
+        )
+      } else {
+        <div style={style}>
+          <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+        </div>
+      }
+    })
     // return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
 
   }
