@@ -1,14 +1,19 @@
 .chatbox {
+  display: flex;
+  flex-direction: column;
   width: 350px;
   padding: 20px;
   background: #eee;
 }
 
 .chat-messages {
+  flex: 1 0 auto;
   margin-bottom: 20px;
 }
 
 .chat-form {
+  flex: 0 0 auto;
+  align-self: flex-end;
   width: 100%;
 }
 
