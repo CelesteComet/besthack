@@ -9,7 +9,6 @@ export const setCurrentUser = name => {
 };
 
 export const setToken = token => {
-  console.log("WOWOWOWOW")
   return {
     type: SET_TOKEN,
     payload: { token }

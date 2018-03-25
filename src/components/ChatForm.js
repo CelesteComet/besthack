@@ -1,5 +1,5 @@
 import React from 'react';
-import { OTSession, OTPublisher, OTStreams, OTSubscriber, createSession} from 'opentok-react';
+import {createSession} from 'opentok-react';
 
 export default class ChatForm extends React.Component {
   state = {
@@ -15,11 +15,8 @@ export default class ChatForm extends React.Component {
       onStreamsUpdated: streams => { this.setState({ streams }); }
     });
 
-    this.properties = {
-      name: 'Bruce'
-    };
-
     this.sessionHelper.session.on('signal:msg', function(event) {
+      console.log('receive signal');
       console.log(event);
     });
   }
