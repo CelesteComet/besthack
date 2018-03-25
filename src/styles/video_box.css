@@ -85,6 +85,7 @@
   background: #222;
   color: #fff;
   padding: 20px;
+  overflow: hidden;
 }
 
 .queue__wrapper p {
@@ -96,9 +97,9 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  flex-wrap: wrap;
   transition: all 0.3s ease-in-out;
-  max-height: 25vh;
+  height: calc(100vh - 85px);
+  max-height: none;
   overflow-y: scroll;
   padding: 0;
 }
@@ -121,5 +122,10 @@
   .queue__wrapper {
     background: silver;
     color: #000;
+  }
+
+  .queue {
+    height: auto;
+    max-height: 30vh;
   }
 }
