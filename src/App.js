@@ -53,8 +53,12 @@ class App extends Component {
             <VideoBox />
             <ChatBox />
           </div>
-        </div>}
+        </div>
+        }
+
         { !currentUser && <NameEntry /> }
+
+
       </div>
     );
   }

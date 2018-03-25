@@ -27,12 +27,25 @@ class NameEntry extends Component {
 
   render() {
     return (
+
       <form onSubmit={this.handleSubmit} className='name-entry'>
+
         <div>
           <input type='text' onChange={this.handleChange} />
           <button>Enter Name</button>
         </div>
+        <br/>
+
+        <div className="townhall-about">
+          <img src={require("../images/TownHall.svg")} height="200px" alt="main-logo" />
+          TownHall is a multi-purpose video streaming application. 
+        </div>
+
       </form>
+
+
+
+
     );
   }
 }
@@ -46,4 +59,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(null, mapDispatchToProps)(NameEntry);
-
