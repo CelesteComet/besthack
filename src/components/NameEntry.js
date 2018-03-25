@@ -54,7 +54,7 @@ class NameEntry extends Component {
 
   render() {
     return (
-      <div className="div-home">
+
         <form onSubmit={this.handleSubmit} className="name-entry">
           <div className="name-entry-input">
             <input
@@ -65,6 +65,12 @@ class NameEntry extends Component {
           <button><i class="fas fa-arrow-right" aria-label="Submit"></i></button>
           </div>
 
+          <div className="slidingVertical">
+            <h3> Attend virtual lectures </h3>
+            <h3> Schedule a Doctor's appointment </h3>
+            <h3> Attend Global conferences </h3>
+          </div>
+
           <div className="townhall-about">
             <img src="https://res.cloudinary.com/dbtepon6n/image/upload/c_scale,w_189/v1521964232/TownHall.svg" alt="main-logo" />
             <p> TownHall is a multi-purpose video streaming application. </p>
@@ -72,7 +78,7 @@ class NameEntry extends Component {
         </form>
 
 
-      </div>
+
 
 
 
