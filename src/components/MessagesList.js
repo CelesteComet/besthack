@@ -1,11 +1,60 @@
 import React from 'react';
+import {fetchMessages} from '../frontend/actions/messages_actions';
+import { connect } from 'react-redux';
 
-export default class MessagesList extends React.Component {
+class MessagesList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    this.props.fetchMessages().then(() => {
+      this.setState({loading: false});
+    })
+  }
+
+  toLocalTime(utc) {
+    const date = new Date(Date.parse(utc));
+    const timeString = date.toLocaleTimeString();
+    return timeString.slice(0, -6).concat(timeString.slice(-3));
+  };
+
   render() {
+    if (this.state.loading) {
+      return (
+        <div className="chat-messages">
+          Loading...
+        </div>
+      )
+    }
+
     return(
-      <div className="chat-messages">
-        Messages
-      </div>
+      <ul className="chat-messages">
+        {this.props.messages.map((message, idx) => (
+          <li key={idx}>
+            {message.author_name}
+            {message.body}
+            {this.toLocalTime(message.timestamp)}
+          </li>
+        ))}
+      </ul>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    messages: state.messages
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMessages: () => dispatch(fetchMessages())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessagesList);
