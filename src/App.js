@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     const { currentUser } = this.props;
     return (
-      <div className="container">
+      <div className="App-container">
         {
           currentUser &&
           <div className="App">

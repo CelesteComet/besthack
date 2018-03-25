@@ -55,7 +55,7 @@ html {
   min-height: 100vh;
 } */
 
-html, body, #root, .container {
+html, body, #root, .App-container {
   height: 100%;
 }
 
@@ -76,7 +76,7 @@ button {
   border-radius: 3px;
 }
 
-.container {
+.App-container {
   display: flex;
   justify-content: center;
   align-items: center;
