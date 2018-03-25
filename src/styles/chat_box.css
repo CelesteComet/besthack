@@ -55,6 +55,16 @@
   width: 100%;
   padding: 0.5rem;
   resize: none;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.05);
+  transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.chat-form textarea:focus,
+.chat-form textarea:hover {
+  outline: none;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.15);
 }
 
 @media (max-width: 900px), (orientation: portrait) {
