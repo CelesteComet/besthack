@@ -12,10 +12,11 @@ export default class VideoBox extends React.Component {
           <p>Company/Organizer</p>
         </div>
         <div className="main-video">
-        <Publisher />
+          <Publisher />
           <Draggable bounds="parent">
-
+            <div className="popup-video">
               <Subscriber />
+            </div>
           </Draggable>
         </div>
       </div>

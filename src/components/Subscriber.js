@@ -21,14 +21,14 @@ class Subscriber extends React.Component {
       name: 'Bruce'
     };
   }
- 
+
   componentWillUnmount() {
     this.sessionHelper.disconnect();
   }
 
   render() {
     return (
-      <div className="popup-video">
+      <div>
         {this.state.streams.map(stream => {
           return (
             <OTSubscriber

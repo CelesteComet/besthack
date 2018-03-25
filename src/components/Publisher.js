@@ -21,14 +21,14 @@ class Publisher extends React.Component {
       name: 'Bruce'
     };
   }
- 
+
   componentWillUnmount() {
     this.sessionHelper.disconnect();
   }
 
   render() {
     return (
-      <div>
+      <div className="publisher-container">
         <OTPublisher session={this.sessionHelper.session} properties={this.properties} />
       </div>
     );

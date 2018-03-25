@@ -4,7 +4,6 @@
 }
 
 .main-video {
-  background: green;
   padding-bottom: 56.2%;
   position: relative;
 }
@@ -16,6 +15,7 @@
   background: yellow;
   top: 10px;
   right: 10px;
+  z-index: 3;
 }
 
 .video-title {
