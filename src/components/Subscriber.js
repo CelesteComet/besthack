@@ -25,18 +25,20 @@ class Subscriber extends React.Component {
   }
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, speaker } = this.props;
     return (
       <div>
         {this.state.streams.map(stream => {
-          return (
-            <OTSubscriber
-              key={stream.id}
-              session={this.sessionHelper.session}
-              stream={stream}
-              properties={{name: currentUser.currentUser}}
-            />
-          );
+          if (stream.name === speaker) {
+            return (
+              <OTSubscriber
+                key={stream.id}
+                session={this.sessionHelper.session}
+                stream={stream}
+                properties={{name: stream.name}}
+              />
+            );
+          } else { return null }
         })}
       </div>
     );
@@ -46,6 +48,7 @@ class Subscriber extends React.Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.session.currentUser,
+    speaker: state.session.speaker,
     token: state.session.token
   };
 };

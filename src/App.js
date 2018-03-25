@@ -18,7 +18,8 @@ import NameEntry from './components/NameEntry';
 class App extends Component {
 
   componentDidMount() {
-
+    const { getSpeaker } = this.props;
+    getSpeaker();
   }
 
   render() {
@@ -48,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchSpeaker: () => { return dispatch(fetchSpeaker()) },
+    getSpeaker: () => { dispatch(fetchSpeaker()) },
     setToken: token => { dispatch(setToken(token)) }
   };
 };

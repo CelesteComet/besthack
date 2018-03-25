@@ -27,30 +27,6 @@ class NameEntry extends Component {
     e.preventDefault();
     const { setCurrentUser } = this.props;
     setCurrentUser(this.state.name);
-
-
-    
-    // check if you are the host
-
-    // check if stream is speaker1
-    const sessionId = '2_MX40NjA4Njg4Mn5-MTUyMTkyNjUwMjA2MX5FL1JpeDdubzFqVnhXMG0zOGV2cmUyTDZ-fg'
-    const tokenOptions = {};
-    const speakerId = 'bla'
-
-    if (speakerId === 'bob') {
-      tokenOptions.role = "subscriber";
-      tokenOptions.data = "username=bob";
-    } else {
-      tokenOptions.role = "subscriber";
-      tokenOptions.data = "username=bob";
-    }
-
-    // Generate a token.
-    var token = myOpenTok.generateToken(sessionId, tokenOptions);
-    window.token = token;
-    setToken(token);
-
-
   }
 
   render() {
