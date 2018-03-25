@@ -18,7 +18,26 @@ export const fetchSpeaker = () =>
     dataType: "json"
   });
 
-  export const updateSpeaker = () =>
+
+//   {
+//     "type": "update",
+//     "args": {
+//         "table": "speaker",
+//         "where": {
+//             "id": {
+//                 "$eq": "1"
+//             }
+//         },
+//         "$set": {
+//             "name": "adawd"
+//         },
+//         "returning": [
+//             "name"
+//         ]
+//     }
+// }
+
+  export const updateSpeaker = speakerId =>
   // fetches the one, only speaker in the table 
   $.ajax({
     url: "https://data.absolve11.hasura-app.io/v1/query",
@@ -31,7 +50,13 @@ export const fetchSpeaker = () =>
               "id": {
                   "$eq": "1"
               }
-          }
+          },
+          "$set": {
+              "name": speakerId
+          },
+          "returning": [
+              "name"
+          ]
       }
     }),
     type: "POST",
