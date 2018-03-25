@@ -28,6 +28,7 @@ class NameEntry extends Component {
     const { setCurrentUser } = this.props;
     setCurrentUser(this.state.name);
 
+
     // check if you are the host
 
     // check if stream is speaker1
@@ -47,6 +48,8 @@ class NameEntry extends Component {
     var token = myOpenTok.generateToken(sessionId, tokenOptions);
     window.token = token;
     setToken(token);
+
+
   }
 
   render() {

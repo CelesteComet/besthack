@@ -2,6 +2,7 @@ import React from 'react';
 import Draggable from 'react-draggable';
 import {connect} from 'react-redux';
 import {createSession} from 'opentok-react';
+import moment from 'moment';
 
 import Publisher from './Publisher';
 import Subscriber from './Subscriber';
@@ -39,8 +40,10 @@ class VideoBox extends React.Component {
   }
 
   raiseQuestion() {
-    firebase.database().ref(`queue/${this.props.currentUser}`).set({
-      name: this.props.currentUser
+    const timeInUnix = moment().unix();
+    firebase.database().ref(`queue/${timeInUnix}`).set({
+      name: this.props.currentUser,
+      time: timeInUnix
     });
     this.setState({inQueue: true});
   }
@@ -111,10 +114,11 @@ class VideoBox extends React.Component {
         <p>Queue (Total {queue.length})</p>
         <ul className="queue">
           {queue.slice(0,12).map((user, idx) => {
+            const timeAgo = moment.unix(user.time).fromNow();
             return (
               <li key={idx} className="queue-item"
                 onClick={(e) => this.updateSpeaker(user.name)}>
-                {user.userToken} {user.name}
+                {user.name} ({timeAgo})
               </li>
             );
           })}

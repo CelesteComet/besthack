@@ -55,9 +55,7 @@ html {
   min-height: 100vh;
 } */
 
-
-
-html {
+html, body, #root, .App-container {
   height: 100%;
 }
 
@@ -78,11 +76,11 @@ button {
   border-radius: 3px;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
 }
 
-.container {
+.App-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,7 +113,7 @@ button:hover{
   flex-direction: column;
 }
 
-.div-home{
+.div-home {
   display: flex;
   justify-content: center;
 }
