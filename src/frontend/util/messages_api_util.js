@@ -11,7 +11,7 @@ export const fetchMessages = () =>
           ]
         }
       }),
-      type: "GET",
+      type: "POST",
       dataType: "json"
   });
 

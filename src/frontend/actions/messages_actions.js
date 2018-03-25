@@ -10,7 +10,7 @@ export const fetchMessages = () => dispatch =>
       console.log("Error: " + errorThrown);
       console.log("Status: " + status);
       console.dir(xhr);
-  })
+  });
 
 
 export const createMessage = (authorName, body) => dispatch =>
@@ -20,7 +20,7 @@ export const createMessage = (authorName, body) => dispatch =>
       console.log("Error: " + errorThrown);
       console.log("Status: " + status);
       console.dir(xhr);
-  })
+  });
 
 const receiveAllMessages = payload => ({
   type: RECEIVE_ALL_MESSAGES,
@@ -30,4 +30,4 @@ const receiveAllMessages = payload => ({
 const receiveMessage = payload => ({
   type: RECEIVE_MESSAGE,
   payload
-})
+});
