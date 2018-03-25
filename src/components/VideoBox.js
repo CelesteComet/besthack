@@ -60,7 +60,7 @@ export default class VideoBox extends React.Component {
         <p>Queue (Total {queue.length})</p>
         <ul className="queue">
           {queue.slice(0,4).map(user => {
-            return (<li className="queue-item">{user.userToken}</li>);
+            return (<li className="queue-item">{user.userToken} {user.name}</li>);
           })}
         </ul>
       </div>
