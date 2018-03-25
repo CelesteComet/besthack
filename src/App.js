@@ -49,21 +49,27 @@ class App extends Component {
     // check if you are the host
 
     // check if stream is speaker1
-    fetchSpeaker
+    fetchSpeaker;
   }
 
   render() {
     return (
       <div className="App">
-        <div className="App2">
+        <header>
+          <h1>Townhall</h1>
+        </header>
+
+        <main>
           <VideoBox />
           <ChatBox />
-        </div>
+        </main>
+
+        <footer>
+          Reactathon 2018
+        </footer>
       </div>
     );
   }
 }
-
-
 
 export default App;
