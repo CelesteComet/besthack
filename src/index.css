@@ -55,6 +55,10 @@ html {
   min-height: 100vh;
 } */
 
+button:hover{
+  cursor: pointer;
+}
+
 html {
   height: 100%;
 }
@@ -64,14 +68,16 @@ body {
   padding: 0;
   font-family: sans-serif;
   height: 100%;
+  overflow: hidden;
 }
 
 /* NAME ENTRY */
 
 .name-entry {
   display: flex;
-  margin-top: 300px;
-  border: 1px solid black;
+  /* margin-top: 300px; */
+  /* border: 1px solid black; */
+  margin-top: 25%;
   height: 400px;
   width: 600px;
   margin: 0 auto;
@@ -87,4 +93,9 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.div-home{
+  display: flex;
+  justify-content: center;
 }

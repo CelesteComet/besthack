@@ -29,7 +29,7 @@ class NameEntry extends Component {
     setCurrentUser(this.state.name);
 
 
-    
+
     // check if you are the host
 
     // check if stream is speaker1
@@ -55,21 +55,24 @@ class NameEntry extends Component {
 
   render() {
     return (
+      <div className="div-home">
 
-      <form onSubmit={this.handleSubmit} className='name-entry'>
+        <form onSubmit={this.handleSubmit} className='name-entry'>
 
-        <div>
-          <input type='text' onChange={this.handleChange} />
-          <button>Enter Name</button>
-        </div>
-        <br/>
+          <div>
+            <input type='text' onChange={this.handleChange} />
+            <button>Enter Name</button>
+          </div>
+          <br/>
 
-        <div className="townhall-about">
-          <img src="https://res.cloudinary.com/dbtepon6n/image/upload/c_scale,w_189/v1521964232/TownHall.svg" alt="main-logo" />
-          <p> TownHall is a multi-purpose video streaming application. </p>
-        </div>
+          <div className="townhall-about">
+            <img src="https://res.cloudinary.com/dbtepon6n/image/upload/c_scale,w_189/v1521964232/TownHall.svg" alt="main-logo" />
+            <p> TownHall is a multi-purpose video streaming application. </p>
+          </div>
 
-      </form>
+        </form>
+
+      </div>
 
 
 
