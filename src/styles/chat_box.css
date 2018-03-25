@@ -4,6 +4,7 @@
   width: 350px;
   padding: 20px;
   background: #eee;
+  height: 100%;
 }
 
 .chat-messages {
