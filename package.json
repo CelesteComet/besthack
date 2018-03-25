@@ -3,12 +3,9 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "firebase": "^4.12.0",
->>>>>>> 05b5b7dbf54ba1e659226fe6e790a6757762a990
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",
+    "firebase": "^4.12.0",
     "jquery": "^3.3.1",
     "netlify-lambda": "^0.3.0",
     "opentok": "^2.6.2",
