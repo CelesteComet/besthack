@@ -2,6 +2,7 @@ import React from 'react';
 import Draggable from 'react-draggable';
 import {connect} from 'react-redux';
 import {createSession} from 'opentok-react';
+import moment from 'moment';
 
 import Publisher from './Publisher';
 import Subscriber from './Subscriber';
@@ -12,7 +13,8 @@ import { updateSpeaker } from '../frontend/actions/speakers_actions';
 class VideoBox extends React.Component {
   constructor() {
     super();
-    this.state = { queue: {}, inQueue: false};
+    this.state = { queue: {}, inQueue: false, streams: []};
+    this.renderPublisher = this.renderPublisher.bind(this);
   }
 
   componentWillMount() {
@@ -39,8 +41,10 @@ class VideoBox extends React.Component {
   }
 
   raiseQuestion() {
-    firebase.database().ref(`queue/${this.props.currentUser}`).set({
-      name: this.props.currentUser
+    const timeInUnix = moment().unix();
+    firebase.database().ref(`queue/${timeInUnix}`).set({
+      name: this.props.currentUser,
+      time: timeInUnix
     });
     this.setState({inQueue: true});
   }
@@ -73,7 +77,17 @@ class VideoBox extends React.Component {
   renderQuestionSection() {
     if (this.isHost()) return null; // dont render this if user is a host
     if (this.state.inQueue) {// already in the queue
-      return <div className="queue-wait-text"> You are in the Question Queue</div>;
+      let position;
+      Object.values(this.state.queue).forEach((user, idx) => {
+        if (user.name === this.props.currentUser) {
+          position = idx + 1;
+        }
+      });
+      return (
+        <div className="queue-wait-text">
+          You are position {position} in the Queue
+        </div>
+      );
     } else {
       return (
         <div className="question-button"
@@ -84,18 +98,23 @@ class VideoBox extends React.Component {
     }
   }
 
-  renderPopUp() {
-    if (this.props.speaker === "") {// if no speaker is allowed, dont show the pop up
-      return null;
-    } else {
-      return (
-        <Draggable bounds="parent">
-          <div className="popup-video">
-            <Subscriber />
-          </div>
-        </Draggable>
-      );
-    }
+  renderPublisher() {
+    // if (this.props.currentUser === "host") {
+    //   return <div className=""><Publisher />;
+    // }
+    return <Publisher />;
+  // renderPopUp() {
+  //   if (this.props.speaker === "") {// if no speaker is allowed, dont show the pop up
+  //     return null;
+  //   } else {
+  //     return (
+  //       <Draggable bounds="parent">
+  //         <div className="popup-video">
+  //           <Subscriber />
+  //         </div>
+  //       </Draggable>
+  //     );
+  //   }
   }
 
   render() {
@@ -104,17 +123,24 @@ class VideoBox extends React.Component {
     return(
       <div className="video-box">
         <div className="main-video">
-          <Publisher />
-          {this.renderPopUp()}
+          {this.renderPublisher()};
+          <Draggable bounds="parent">
+            <div className="popup-video">
+              <Subscriber />
+            </div>
+          </Draggable>
+          {/* <Publisher />
+          {this.renderPopUp()} */}
         </div>
         {this.renderQuestionSection()}
         <p>Queue (Total {queue.length})</p>
         <ul className="queue">
           {queue.slice(0,12).map((user, idx) => {
+            const timeAgo = moment.unix(user.time).fromNow();
             return (
               <li key={idx} className="queue-item"
                 onClick={(e) => this.updateSpeaker(user.name)}>
-                {user.userToken} {user.name}
+                {user.name} ({timeAgo})
               </li>
             );
           })}

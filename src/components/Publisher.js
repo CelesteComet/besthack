@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {OTPublisher, createSession} from 'opentok-react';
+import {OTPublisher, createSession, OTSubscriber} from 'opentok-react';
 
 class Publisher extends React.Component {
 
@@ -11,10 +11,11 @@ class Publisher extends React.Component {
       properties: {
         name: 'host',
         audioFallbackEnabled: false,
-        showControls: false,
+        showControls: true,
         publishVideo: true
       }
     };
+    this.renderHost = this.renderHost.bind(this);
   }
 
   componentWillMount() {
@@ -48,14 +49,32 @@ class Publisher extends React.Component {
 
   }
 
+  renderHost() {
+    if (this.props.currentUser === this.props.host) {
+      return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+    }
+    this.state.streams.forEach(stream => {
+      if (stream.name === this.props.host) {
+        return (
+          <OTSubscriber
+            key={stream.id}
+            session={this.sessionHelper.session}
+            stream={stream}
+            properties={{name: stream.name}}
+          />
+        )
+      }
+    })
+  }
+
   render() {
     return (
       <div className="publisher-container">
         <div className="video-buttons">
           <button onClick={this.handleClick}> Toggle Video </button>
-          <button onClick={this.endCall}> End Call </button>
+          <button style={{backgroundColor: 'red'}} onClick={this.endCall}> End Call </button>
         </div>
-        <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+        {this.renderHost()}
       </div>
     );
   }
@@ -64,7 +83,9 @@ class Publisher extends React.Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.session.currentUser,
-    token: state.session.token
+    token: state.session.token,
+    host: state.host.name,
+    speaker: state.speaker
   };
 };
 
