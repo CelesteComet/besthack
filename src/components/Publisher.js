@@ -5,7 +5,6 @@ class Publisher extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       streams: [],
       properties: {
@@ -15,10 +14,6 @@ class Publisher extends React.Component {
         publishVideo: true
       }
     };
-
-
-
-
   }
 
   componentWillMount() {

@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 // Import our components:
 import VideoBox from './components/VideoBox';
 import ChatBox from './components/ChatBox';
+import NameEntry from './components/NameEntry';
 
 // Import OpenTok
 import opentok from 'opentok';
@@ -21,9 +22,6 @@ class App extends Component {
   componentDidMount() {
     const { fetchSpeaker } = this.props;
     // check if you are the host
-
-
-
 
     // check if stream is speaker1
     fetchSpeaker().then(speaker => {
@@ -45,19 +43,26 @@ class App extends Component {
   }
 
   render() {
+    const { currentUser } = this.props;
+    console.log(currentUser)
     return (
-      <div className="App">
-        <div className="App2">
-          <VideoBox />
-          <ChatBox />
-        </div>
+      <div>
+        { currentUser && 
+        <div className="App">
+          <div className="App2">
+            <VideoBox />
+            <ChatBox />
+
+          </div>
+        </div>}
+        { !currentUser && <NameEntry /> }
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { state };
+  return { currentUser: state.session.currentUser };
 };
 
 const mapDispatchToProps = dispatch => {
