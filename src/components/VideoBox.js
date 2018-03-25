@@ -171,7 +171,7 @@ class VideoBox extends React.Component {
               const timeAgo = moment.unix(user.time).fromNow();
               return (
                 <li key={idx} className="queue-item"
-                  onClick={(e) => this.updateSpeaker(user.name)}>
+                  onClick={(e) => this.updateSpeaker(user)}>
                   {user.name} ({timeAgo})
                 </li>
               );
