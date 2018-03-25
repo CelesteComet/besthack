@@ -24,19 +24,25 @@ class App extends Component {
     // check if you are the host
 
 
-    var sessionId = '2_MX40NjA4Njg4Mn5-MTUyMTkyNjUwMjA2MX5FL1JpeDdubzFqVnhXMG0zOGV2cmUyTDZ-fg'
-    var tokenOptions = {};
-    tokenOptions.role = "publisher";
-    tokenOptions.data = "username=bob";
-
-    // Generate a token.
-    var token = myOpenTok.generateToken(sessionId, tokenOptions);
-    console.log(token);
 
 
     // check if stream is speaker1
-    fetchSpeaker()
-    
+    fetchSpeaker().then(speaker => {
+      const sessionId = '2_MX40NjA4Njg4Mn5-MTUyMTkyNjUwMjA2MX5FL1JpeDdubzFqVnhXMG0zOGV2cmUyTDZ-fg'
+      const tokenOptions = {};
+      const speakerId = speaker[0].name;
+
+      if (speakerId === 'bob') {
+        tokenOptions.role = "subscriber";
+        tokenOptions.data = "username=bob";
+      } else {
+        tokenOptions.role = "subscriber";
+        tokenOptions.data = "username=bob";
+      }
+
+      // Generate a token.
+      var token = myOpenTok.generateToken(sessionId, tokenOptions);
+    });
   }
 
   render() {
@@ -51,12 +57,16 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return { state };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
-    fetchSpeaker: () => { dispatch(fetchSpeaker()) }
+    fetchSpeaker: () => { return dispatch(fetchSpeaker()) }
   };
 };
 
 
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
