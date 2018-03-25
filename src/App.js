@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-<<<<<<< HEAD
-import VideoBox from './components/VideoBox';
-import ChatBox from './components/ChatBox';
-=======
 // Import Actions
 import { fetchSpeaker } from './frontend/actions/speakers_actions';
 
@@ -46,7 +42,6 @@ import ChatBox from './components/ChatBox';
 //     </p>
 //   }
 // }
->>>>>>> master
 
 class App extends Component {
 
@@ -60,16 +55,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-<<<<<<< HEAD
-        <header>Header</header>
-        <main>
-=======
         <div className="App2">
->>>>>>> master
           <VideoBox />
           <ChatBox />
-        </main>
-        <footer>Footer</footer>
+        </div>
       </div>
     );
   }

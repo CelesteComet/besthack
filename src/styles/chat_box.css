@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .chatbox {
   display: flex;
   flex-direction: column;
@@ -32,10 +31,4 @@
   .chatbox {
     width: 100vw;
   }
-=======
-.chat-box {
-  background: blue;
-  width: 400px;
-  height: 100vh;
->>>>>>> master
 }

@@ -15,30 +15,14 @@ header, footer {
   color: white;
 }
 
-<<<<<<< HEAD
 main {
   flex: 1 0 auto;
   display: flex;
   justify-content: space-between;
   width: 100%;
-=======
-.App-title {
-  font-size: 1.5em;
 }
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-
 
 .App2 {
   display: flex;
   justify-content: space-between;
->>>>>>> master
 }
