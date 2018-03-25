@@ -22,16 +22,19 @@ export const fetchMessages = () => dispatch =>
 //       console.dir(xhr);
 //     });
 
+// export const createMessage = (authorName, body) => dispatch =>
+//   MessagesApiUtil.createMessage(authorName, body)
+//     .then(() => dispatch(receiveMessage({author_name: authorName, body: body})))
+
 export const createMessage = (authorName, body) => dispatch =>
   MessagesApiUtil.createMessage(authorName, body)
-    .then(() => dispatch(receiveMessage({author_name: authorName, body: body})))
 
 const receiveAllMessages = payload => ({
   type: RECEIVE_ALL_MESSAGES,
   payload
 });
 
-const receiveMessage = payload => ({
+export const receiveMessage = payload => ({
   type: RECEIVE_MESSAGE,
   payload
 });
