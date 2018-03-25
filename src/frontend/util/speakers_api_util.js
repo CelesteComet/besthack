@@ -1,3 +1,5 @@
+const $ = require('jquery');
+
 export const fetchSpeaker = () =>
   // fetches the one, only speaker in the table 
   $.ajax({
