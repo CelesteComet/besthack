@@ -40,7 +40,7 @@ class VideoBox extends React.Component {
 
   raiseQuestion() {
     firebase.database().ref(`queue/${this.props.currentUser}`).set({
-      name: this.props.currentUser.currentUser
+      name: this.props.currentUser
     });
     this.setState({inQueue: true});
   }
