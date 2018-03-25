@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {OTSubscriber, createSession} from 'opentok-react';
+import {OTPublisher, OTSubscriber, createSession} from 'opentok-react';
 
 
 class Subscriber extends React.Component {
@@ -8,7 +8,7 @@ class Subscriber extends React.Component {
   constructor(props) {
     super(props);
     this.state = { sessionId: "", streams: [] };
-
+    this.renderSpeaker = this.renderSpeaker.bind(this);
   }
 
   componentWillMount() {
@@ -20,22 +20,39 @@ class Subscriber extends React.Component {
     });
   }
 
+  renderSpeaker() {
+    // if (this.props.currentUser === this.props.speaker) {
+    //   return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+    // }
+    // this.state.streams.forEach(stream => {
+    //   if (stream.name === this.props.speaker) {
+    //     return (
+    //       <OTSubscriber
+    //         key={stream.id}
+    //         session={this.sessionHelper.session}
+    //         stream={stream}
+    //         properties={{name: stream.name}}
+    //       />
+    //     );
+    //   }
+    // })
+
+    return this.state.streams.map(stream => {
+        
+      return <OTSubscriber
+        key={stream.id}
+        session={this.sessionHelper.session}
+        stream={stream}
+        properties={{name: stream.name}}
+      />
+        
+    })
+  }
+
   render() {
-    const { currentUser, speaker } = this.props;
     return (
       <div>
-        {this.state.streams.map(stream => {
-          if (stream.name === speaker) {
-            return (
-              <OTSubscriber
-                key={stream.id}
-                session={this.sessionHelper.session}
-                stream={stream}
-                properties={{name: stream.name}}
-              />
-            );
-          } else { return null }
-        })}
+        {this.renderSpeaker()}
       </div>
     );
   }

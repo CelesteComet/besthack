@@ -1,6 +1,7 @@
 .video-box {
   background: silver;
   width: 100%;
+  border: 5px solid red;
 }
 
 .main-video {

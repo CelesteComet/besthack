@@ -12,7 +12,8 @@ import { updateSpeaker } from '../frontend/actions/speakers_actions';
 class VideoBox extends React.Component {
   constructor() {
     super();
-    this.state = { queue: {}, inQueue: false};
+    this.state = { queue: {}, inQueue: false, streams: []};
+    this.renderPublisher = this.renderPublisher.bind(this);
   }
 
   componentWillMount() {
@@ -76,6 +77,13 @@ class VideoBox extends React.Component {
     }
   }
 
+  renderPublisher() {
+    // if (this.props.currentUser === "host") {
+    //   return <div className=""><Publisher />;
+    // }
+    return <Publisher />;
+  }
+
   render() {
     const queue = Object.values(this.state.queue);
     const { host, currentUser } = this.props;
@@ -85,7 +93,7 @@ class VideoBox extends React.Component {
     return(
       <div className="video-box">
         <div className="main-video">
-          <Publisher />
+          {this.renderPublisher()};
           <Draggable bounds="parent">
             <div className="popup-video">
               <Subscriber />
