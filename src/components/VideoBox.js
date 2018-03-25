@@ -76,7 +76,17 @@ class VideoBox extends React.Component {
   renderQuestionSection() {
     if (this.isHost()) return null; // dont render this if user is a host
     if (this.state.inQueue) {// already in the queue
-      return <div className="queue-wait-text"> You are in the Question Queue</div>;
+      let position;
+      Object.values(this.state.queue).forEach((user, idx) => {
+        if (user.name === this.props.currentUser) {
+          position = idx + 1;
+        }
+      });
+      return (
+        <div className="queue-wait-text">
+          You are position {position} in the Queue
+        </div>
+      );
     } else {
       return (
         <div className="question-button"
