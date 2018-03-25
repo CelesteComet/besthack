@@ -9,7 +9,7 @@ class ChatForm extends React.Component {
   }
 
   componentWillMount() {
-    
+
     this.sessionHelper = createSession({
       apiKey: '46086882',
       sessionId: '2_MX40NjA4Njg4Mn5-MTUyMTkyNjUwMjA2MX5FL1JpeDdubzFqVnhXMG0zOGV2cmUyTDZ-fg',
@@ -52,8 +52,6 @@ class ChatForm extends React.Component {
     let messageBody = this.state.value.trim()
 
     if (messageBody) {
-      // console.log(this.state.value.trim());
-
       this.sessionHelper.session.signal({
         type: 'msg',
         data: `{"author_name": "${this.props.currentUser}", "body": "${messageBody}"}`,
@@ -61,7 +59,11 @@ class ChatForm extends React.Component {
         if (error) {
           console.log('Error sending signal:', error.name, error.message);
         } else {
-          this.props.createMessage(this.props.currentUser, messageBody);
+          this.props.createMessage(this.props.currentUser, messageBody)
+            .then(() => {
+              const list = document.querySelector('.chat-messages');
+              list.scrollTop = list.scrollHeight;
+          });
         }
       });
 
