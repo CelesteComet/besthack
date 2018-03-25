@@ -2,6 +2,7 @@ import { SET_CURRENT_USER, SET_TOKEN } from '../frontend/actions/auth_actions';
 
 const authReducer = (state = {}, action) => {
   const newState = Object.assign({}, state);
+  
   switch (action.type) {
     case SET_CURRENT_USER:
       newState.currentUser = action.payload

@@ -25,25 +25,27 @@ class MessagesList extends React.Component {
   render() {
     if (this.state.loading) {
       return (
-        <div className="chat-messages">
+        <div className="chat__wrapper">
           Loading...
         </div>
       )
     }
 
     return(
-      <ul className="chat-messages">
-        {this.props.messages.map((message, idx) => (
-          <li key={idx}>
-            <span className="message-author">
-              {message.author_name}:
-            </span>
-            <span className="message-body">
-              {message.body}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <div className="chat__wrapper">
+        <ul className="chat-messages">
+          {this.props.messages.map((message, idx) => (
+            <li key={idx}>
+              <span className="message-author">
+                {message.author_name}:
+              </span>
+              <span className="message-body">
+                {message.body}
+              </span>
+            </li>
+          ))}
+        </ul>
+    </div>
     );
   }
 }
