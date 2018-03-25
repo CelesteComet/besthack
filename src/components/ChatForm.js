@@ -17,7 +17,7 @@ export default class ChatForm extends React.Component {
 
   submitOnEnter = (e) => {
     if (e.key === 'Enter') {
-      if (e.target.value.trim() === '') {
+      if (!e.target.value.trim()) {
         e.preventDefault();
       }
 
@@ -32,7 +32,7 @@ export default class ChatForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    if (e.target.value.trim()) {
+    if (this.state.value.trim()) {
       console.log(this.state.value.trim());
       e.target.value = '';
       this.setState({ value: '' });
