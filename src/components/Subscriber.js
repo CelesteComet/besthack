@@ -9,6 +9,8 @@ class Subscriber extends React.Component {
 
   }
 
+
+
   componentWillMount() {
 
     this.sessionHelper = createSession({

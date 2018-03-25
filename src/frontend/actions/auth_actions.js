@@ -1,4 +1,5 @@
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const SET_TOKEN = "SET_TOKEN";
 
 export const setCurrentUser = name => {
   return {
@@ -6,3 +7,11 @@ export const setCurrentUser = name => {
     payload: { currentUser: name }
   }  
 };
+
+export const setToken = token => {
+  console.log("WOWOWOWOW")
+  return {
+    type: SET_TOKEN,
+    payload: { token }
+  }
+}
