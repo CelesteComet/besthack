@@ -124,7 +124,7 @@ class VideoBox extends React.Component {
           {this.renderPublisher()};
           <Draggable bounds="parent">
             <div className="popup-video">
-              <Subscriber />
+              <Subscriber name={this.props.speaker}/>
             </div>
           </Draggable>
         </div>
@@ -132,7 +132,7 @@ class VideoBox extends React.Component {
     } else if (this.props.currentUser === this.props.speaker) { // i am a speaker
       return (
         <div className="main-video">
-          <Subscriber />
+          <Subscriber name="host"/>
           <Draggable bounds="parent">
             <div className="popup-video">
               {this.renderPublisher()}
@@ -143,7 +143,12 @@ class VideoBox extends React.Component {
     } else { // i am just a viewer
       return (
         <div className="main-video">
-          <Subscriber />
+          <Subscriber name="host"/>
+            <Draggable bounds="parent">
+              <div className="popup-video">
+                <Subscriber name={this.props.speaker}/>
+              </div>
+            </Draggable>
         </div>
       );
     }
