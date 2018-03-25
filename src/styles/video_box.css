@@ -30,3 +30,37 @@
   min-width: fit-content;
   min-height: fit-content;
 }
+
+.question-button {
+  margin: 30px;
+  width: 100px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background: #00A1E4;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.question-button:hover {
+  background: none;
+  border: 1px solid #00A1E4;
+  color: #004968;
+}
+
+.queue-wait-text {
+  padding: 30px;
+  color: #004968;
+  display: inline;
+}
+
+.queue {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  transition: all 0.3s ease-in-out;
+}
+
+.queue-item {
+  list-style: none;
+  padding: 10px
+}
