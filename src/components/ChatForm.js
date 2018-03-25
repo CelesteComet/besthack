@@ -1,8 +1,7 @@
 import React from 'react';
 import {createSession} from 'opentok-react';
-import {createMessage} from '../frontend/actions/messages_actions';
+import {createMessage, receiveMessage} from '../frontend/actions/messages_actions';
 import { connect } from 'react-redux';
-
 
 class ChatForm extends React.Component {
   state = {
@@ -18,10 +17,10 @@ class ChatForm extends React.Component {
       onStreamsUpdated: streams => { this.setState({ streams }); }
     });
 
-    // this.sessionHelper.session.on('signal:msg', function(event) {
-    //   // console.log('receive signal');
-    //   // console.log(event);
-    // });
+    this.sessionHelper.session.on('signal:msg', (event) => {
+      let msg = JSON.parse(event.data);
+      this.props.receiveMessage(msg.author_name, msg.body);
+    });
   }
 
   componentDidMount() {
@@ -57,12 +56,11 @@ class ChatForm extends React.Component {
 
       this.sessionHelper.session.signal({
         type: 'msg',
-        data: messageBody
+        data: `{"author_name": "${this.props.currentUser}", "body": "${messageBody}"}`,
       }, (error) => {
         if (error) {
           console.log('Error sending signal:', error.name, error.message);
         } else {
-          console.log(`currentuser: ${this.props.currentUser}`);
           this.props.createMessage(this.props.currentUser, messageBody);
         }
       });
@@ -98,7 +96,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createMessage: (authorName, body) => dispatch(createMessage(authorName, body))
+    createMessage: (authorName, body) => dispatch(createMessage(authorName, body)),
+    receiveMessage: (authorName, body) => dispatch(receiveMessage({author_name: authorName, body: body}))
   };
 };
 
