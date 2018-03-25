@@ -7,28 +7,36 @@ export default class ChatForm extends React.Component {
 
   componentDidMount() {
     const chatForm = document.querySelector('textarea');
-    chatForm.addEventListener('keyup', this.submitOnEnter);
+    chatForm.addEventListener('keydown', this.submitOnEnter);
   }
 
   componentWillUnmount() {
     const chatForm = document.querySelector('textarea');
-    chatForm.removeEventListener('keyup', this.submitOnEnter);
+    chatForm.removeEventListener('keydown', this.submitOnEnter);
   }
 
   submitOnEnter = (e) => {
     if (e.key === 'Enter') {
-      if (e.shiftKey) {
-        e.target.value += '';
-      } else {
+      if (e.target.value.trim() === '') {
+        e.preventDefault();
+      }
+
+      if (!e.shiftKey && e.target.value.trim()) {
+        e.preventDefault();
         this.handleSubmit(e);
       }
     }
+
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.value);
-    e.target.value = '';
+
+    if (e.target.value.trim()) {
+      console.log(this.state.value.trim());
+      e.target.value = '';
+      this.setState({ value: '' });
+    }
   }
 
   handleChange = (e) => {

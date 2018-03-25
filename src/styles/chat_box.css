@@ -3,8 +3,13 @@
   background: #eee;
 }
 
+.chat-messages {
+  margin: 20px;
+}
+
 .chat-form {
   width: 100%;
+  margin: 20px;
 }
 
 @media (max-width: 900px), (orientation: portrait) {
