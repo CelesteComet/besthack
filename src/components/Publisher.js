@@ -9,7 +9,7 @@ class Publisher extends React.Component {
     this.state = {
       streams: [],
       properties: {
-        name: props.currentUser,
+        name: props.currentUser.currentUser,
         audioFallbackEnabled: false,
         showControls: false,
         publishVideo: true
@@ -24,6 +24,9 @@ class Publisher extends React.Component {
       token: 'T1==cGFydG5lcl9pZD00NjA4Njg4MiZzaWc9Yzk4OTZiZDdmMDViMWNjNDViYjc1ZTk1YzU5MTYzMDE1YjU0YjBmYjpzZXNzaW9uX2lkPTJfTVg0ME5qQTROamc0TW41LU1UVXlNVGt5TmpVd01qQTJNWDVGTDFKcGVEZHViekZxVm5oWE1HMHpPR1YyY21VeVREWi1mZyZjcmVhdGVfdGltZT0xNTIxOTMxMzUxJm5vbmNlPTAuMjg4OTgwNzE3MDc3NDYyMSZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNTI0NTIzMzQ5JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9',
       onStreamsUpdated: streams => { this.setState({ streams }); }
     });
+  }
+
+  componentWillReceiveProps() {
 
   }
 
@@ -59,9 +62,10 @@ class Publisher extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    token: state.session.token
   };
 };
 
 
-export default Publisher;
+export default connect(mapStateToProps, null)(Publisher);
