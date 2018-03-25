@@ -51,7 +51,9 @@ export default class ChatForm extends React.Component {
           onChange={this.handleChange}
           placeholder="Type a message..."
         />
-        <input type="submit" value="Send" />
+        <div className="chat-buttons">
+          <input type="submit" value="Send" />
+        </div>
       </form>
     );
   }

@@ -19,8 +19,14 @@
 
 .chat-form > textarea {
   width: 100%;
+  margin-bottom: 10px;
   padding: 0.5rem;
   resize: none;
+}
+
+.chat-buttons {
+  display: flex;
+  justify-content: flex-end;
 }
 
 @media (max-width: 900px), (orientation: portrait) {
