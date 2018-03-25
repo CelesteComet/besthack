@@ -29,10 +29,10 @@ class App extends Component {
         {
           currentUser &&
           <div className="App">
-            <div className="App2">
+            <main className="App__wrapper">
               <VideoBox />
               <ChatBox />
-            </div>
+            </main>
           </div>
         }
 

@@ -29,7 +29,15 @@
   to { transform: rotate(360deg); }
 }
 
-.App2 {
-  display: flex;
-  justify-content: space-between;
+.App__wrapper {
+  display: grid;
+  grid-template-areas: "video chat";
+  grid-template-columns: 1fr 350px;
+}
+
+@media (max-width: 900px), (orientation: portrait) {
+  .App__wrapper {
+    grid-template-areas: "video" "chat";
+    grid-template-columns: 1fr;
+  }
 }
