@@ -53,17 +53,13 @@ class Publisher extends React.Component {
 
 
   render() {
-
-
-
     return (
       <div className="publisher-container">
-        <button onClick={this.handleClick}> Toggle Video </button>
-        <button onClick={this.endCall}> End Call </button>
+        <div className="video-buttons">
+          <button onClick={this.handleClick}> Toggle Video </button>
+          <button onClick={this.endCall}> End Call </button>
+        </div>
         <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
-
-
-
       </div>
     );
   }

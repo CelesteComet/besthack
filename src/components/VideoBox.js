@@ -44,10 +44,6 @@ export default class VideoBox extends React.Component {
     const queue = Object.values(this.state.queue);
     return(
       <div className="video-box">
-        <div className="video-title">
-          <p>Event Name</p>
-          <p>Company/Organizer</p>
-        </div>
         <div className="main-video">
           <Publisher />
           <Draggable bounds="parent">

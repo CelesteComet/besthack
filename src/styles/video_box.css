@@ -8,6 +8,13 @@
   position: relative;
 }
 
+.video-buttons {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .popup-video {
   position: absolute;
   width: 20%;
