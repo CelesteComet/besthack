@@ -3,9 +3,9 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "jquery": "^3.3.1",
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",
+    "jquery": "^3.3.1",
     "netlify-lambda": "^0.3.0",
     "opentok": "^2.6.2",
     "opentok-react": "^0.7.0",
@@ -14,7 +14,9 @@
     "react-draggable": "^3.0.5",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.1",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
