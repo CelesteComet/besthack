@@ -116,7 +116,7 @@
     overflow: auto;
     grid-template-areas: "vid" "ask" "queue";
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 85px 200px;
+    grid-template-rows: 1fr 85px auto;
   }
 
   .queue__wrapper {

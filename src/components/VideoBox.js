@@ -33,7 +33,7 @@ class VideoBox extends React.Component {
   }
 
   componentDidMount() {
-    firebase.database().ref('queue').on('value', (snapshot) => {
+    firebase.database().ref('queue').on('value', (snapshot) => { // make firebase watch the database realtime
       if ( snapshot.val() ) {
         this.setState({ queue: snapshot.val() });
       }
@@ -49,17 +49,17 @@ class VideoBox extends React.Component {
     this.setState({inQueue: true});
   }
 
-  updateSpeaker(nameId) {
+  updateSpeaker(user) {
     if (!this.isHost()) return; // Will not do anything if NOT a host
 
     // Update Speaker in the backend: (Bruce)
     const { dispatch } = this.props;
-    dispatch(updateSpeaker(nameId));
+    dispatch(updateSpeaker(user.name));
 
     // Send signal to other users to update redux store after we update speaker in the backend:
     this.sessionHelper.session.signal({
       type: 'speaker',
-      data: nameId
+      data: user.name
     }, function(error) {
       if (error) {
         console.log('Error sending signal:', error.name, error.message);
@@ -67,7 +67,7 @@ class VideoBox extends React.Component {
     });
 
     // Dequeue:
-    firebase.database().ref(`queue/${nameId}`).remove();
+    firebase.database().ref(`queue/${user.time}`).remove();
   }
 
   isHost() { // To check if a user is the host of this room session:
@@ -117,22 +117,29 @@ class VideoBox extends React.Component {
   //   }
   }
 
+  renderSpeaker() {
+    if (this.props.speaker === "") return null; // if no speaker, dont show pop-up video
+    return (
+      <Draggable bounds="parent">
+        <div className="popup-video">
+          <Subscriber name={this.props.speaker}/>
+        </div>
+      </Draggable>
+    );
+  }
+
   renderVideo() {
     if (this.isHost()) { // i am a host
       return (
         <div className="main-video">
           {this.renderPublisher()};
-          <Draggable bounds="parent">
-            <div className="popup-video">
-              <Subscriber />
-            </div>
-          </Draggable>
+          {this.renderSpeaker()}
         </div>
       );
     } else if (this.props.currentUser === this.props.speaker) { // i am a speaker
       return (
         <div className="main-video">
-          <Subscriber />
+          <Subscriber name="host"/>
           <Draggable bounds="parent">
             <div className="popup-video">
               {this.renderPublisher()}
@@ -143,7 +150,8 @@ class VideoBox extends React.Component {
     } else { // i am just a viewer
       return (
         <div className="main-video">
-          <Subscriber />
+          <Subscriber name="host"/>
+          {this.renderSpeaker()}
         </div>
       );
     }
