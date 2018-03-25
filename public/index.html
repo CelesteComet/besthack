@@ -27,39 +27,6 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <!-- OpenTok.js library -->
-    
-    <script>
-
-    // credentials
-    var apiKey = '45828062';
-    var sessionId = '1_MX40NTgyODA2Mn5-MTUyMTkyODE5Mzg2M355REwrbDRBeWVnb2MvWktPUlQyZ2lQekx-UH4';
-    var token = 'T1==cGFydG5lcl9pZD00NTgyODA2MiZzaWc9Mzg4MTk5YjI0YjViNjU0MDRlOWYxZWI0Yzg1YjVmMmNmOTZmZjY0YzpzZXNzaW9uX2lkPTFfTVg0ME5UZ3lPREEyTW41LU1UVXlNVGt5T0RFNU16ZzJNMzU1UkV3cmJEUkJlV1ZuYjJNdldrdFBVbFF5WjJsUWVreC1VSDQmY3JlYXRlX3RpbWU9MTUyMTkyODc3NCZub25jZT0wLjk0NDQ1NzI0ODUwNzY3MTImcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTUyMjAxNTE3NA==';
-
-
-    // connect to session
-
-    var session = OT.initSession(apiKey, sessionId);
-
-    // create publisher
-    var publisher = OT.initPublisher();
-    session.connect(token, function(err) {
-       // publish publisher
-
-      // create subscriber
-      session.publish(publisher);
-
-      session.on('streamCreated', function(event) {
-         session.subscribe(event.stream);
-      });
-       
-    });
-
-      
-
-
-
-    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

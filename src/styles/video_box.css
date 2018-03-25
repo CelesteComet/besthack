@@ -23,3 +23,10 @@
   flex-direction: column;
   align-items: flex-start;
 }
+
+.OT_publisher, .OT_subscriber {
+  position: static;
+  height: 100% !important;
+  min-width: fit-content;
+  min-height: fit-content;
+}
