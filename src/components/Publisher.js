@@ -9,7 +9,7 @@ class Publisher extends React.Component {
     this.state = {
       streams: [],
       properties: {
-        name: 'host',
+        name: 'ajdjhwadj',
         audioFallbackEnabled: false,
         showControls: true,
         publishVideo: true
@@ -50,21 +50,27 @@ class Publisher extends React.Component {
   }
 
   renderHost() {
-    if (this.props.currentUser === this.props.host) {
-      return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
-    }
-    this.state.streams.forEach(stream => {
-      if (stream.name === this.props.host) {
-        return (
-          <OTSubscriber
-            key={stream.id}
-            session={this.sessionHelper.session}
-            stream={stream}
-            properties={{name: stream.name}}
-          />
-        )
-      }
-    })
+    return (
+      
+      <div>
+        <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+      </div>
+    );
+    // if (this.props.currentUser === this.props.host) {
+    //   return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+    // }
+    // this.state.streams.forEach(stream => {
+    //   if (stream.name === this.props.host) {
+    //     return (
+    //       <OTSubscriber
+    //         key={stream.id}
+    //         session={this.sessionHelper.session}
+    //         stream={stream}
+    //         properties={{name: stream.name}}
+    //       />
+    //     )
+    //   }
+    // })
   }
 
   render() {
