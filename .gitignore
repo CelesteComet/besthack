@@ -10,7 +10,6 @@
 /build
 
 
-
 # misc
 .DS_Store
 .env.local
@@ -24,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # my own
+/yarn.lock
+/package-lock.json

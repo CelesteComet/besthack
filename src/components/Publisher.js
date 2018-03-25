@@ -5,20 +5,10 @@ class Publisher extends React.Component {
 
   constructor(props) {
     super(props);
-<<<<<<< HEAD
-    this.state = { streams: [] };
-=======
     this.state = {sessionId: "", streams: [] };
-
->>>>>>> 969e370ec55095c17ffe9127708a6a3011ec5947
   }
 
   componentWillMount() {
-
-    // This fetch will activate a lambda function which returns a sessionId and is then set in our state.
-    fetch('/.netlify/functions/tokbox')
-     .then(response => response.json())
-     .then(json => this.setState({sessionId: json.payload}));
 
     this.sessionHelper = createSession({
       apiKey: '46086882',
