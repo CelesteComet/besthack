@@ -63,7 +63,7 @@ class VideoBox extends React.Component {
     });
 
     // Dequeue:
-    firebase.database().ref(`queue/${this.props.currentUser}`).remove();
+    firebase.database().ref(`queue/${nameId}`).remove();
   }
 
   isHost() { // To check if a user is the host of this room session:
