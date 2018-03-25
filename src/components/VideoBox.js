@@ -117,16 +117,23 @@ class VideoBox extends React.Component {
   //   }
   }
 
+  renderSpeaker() {
+    if (this.props.speaker === "") return null; // if no speaker, dont show pop-up video
+    return (
+      <Draggable bounds="parent">
+        <div className="popup-video">
+          <Subscriber name={this.props.speaker}/>
+        </div>
+      </Draggable>
+    );
+  }
+
   renderVideo() {
     if (this.isHost()) { // i am a host
       return (
         <div className="main-video">
           {this.renderPublisher()};
-          <Draggable bounds="parent">
-            <div className="popup-video">
-              <Subscriber name={this.props.speaker}/>
-            </div>
-          </Draggable>
+          {this.renderSpeaker()}
         </div>
       );
     } else if (this.props.currentUser === this.props.speaker) { // i am a speaker
@@ -144,11 +151,7 @@ class VideoBox extends React.Component {
       return (
         <div className="main-video">
           <Subscriber name="host"/>
-            <Draggable bounds="parent">
-              <div className="popup-video">
-                <Subscriber name={this.props.speaker}/>
-              </div>
-            </Draggable>
+          {this.renderSpeaker()}
         </div>
       );
     }
