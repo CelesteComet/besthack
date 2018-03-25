@@ -1,3 +1,4 @@
+
 export const fetchMessages = () => 
   $.ajax({
     url: "https://data.absolve11.hasura-app.io/v1/query",

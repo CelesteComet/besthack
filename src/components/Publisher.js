@@ -5,8 +5,12 @@ class Publisher extends React.Component {
 
   constructor(props) {
     super(props);
+<<<<<<< HEAD
+    this.state = { streams: [] };
+=======
     this.state = {sessionId: "", streams: [] };
 
+>>>>>>> 969e370ec55095c17ffe9127708a6a3011ec5947
   }
 
   componentWillMount() {

@@ -1,3 +1,5 @@
+const $ = require('jquery');
+
 export const fetchHost = () =>
   // fetches the one, only host in the table 
   $.ajax({
