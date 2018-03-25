@@ -71,6 +71,8 @@ class Publisher extends React.Component {
     //     )
     //   }
     // })
+    // return <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
+
   }
 
   render() {

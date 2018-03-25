@@ -1,4 +1,5 @@
 .chatbox {
+  grid-area: chat;
   display: flex;
   flex-direction: column;
   width: 350px;
@@ -20,11 +21,13 @@
 
 .chat-messages li {
   margin: 1px 0;
-  display: flex;
+  /* display: flex; */
+  word-break: break-all;
 }
 
 .message-author {
-  margin-right: 2px;
+  margin-right: 5px;
+  font-weight: 700;
 }
 
 .chat-form {
@@ -40,10 +43,6 @@
 }
 
 @media (max-width: 900px), (orientation: portrait) {
-  main {
-    flex-direction: column;
-  }
-
   .chatbox {
     width: 100vw;
   }

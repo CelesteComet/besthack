@@ -35,12 +35,12 @@ class MessagesList extends React.Component {
       <ul className="chat-messages">
         {this.props.messages.map((message, idx) => (
           <li key={idx}>
-            <div className="message-author">
+            <span className="message-author">
               {message.author_name}:
-            </div>
-            <div className="message-body">
+            </span>
+            <span className="message-body">
               {message.body}
-            </div>
+            </span>
           </li>
         ))}
       </ul>
