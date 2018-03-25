@@ -9,7 +9,7 @@ class Publisher extends React.Component {
     this.state = {
       streams: [],
       properties: {
-        name: props.currentUser,
+        name: props.currentUser.currentUser,
         audioFallbackEnabled: false,
         showControls: false,
         publishVideo: true
