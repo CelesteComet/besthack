@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { OTSession, OTPublisher, OTStreams, OTSubscriber, createSession} from 'opentok-react';
+
 
 class Subscriber extends React.Component {
 
@@ -27,15 +29,18 @@ class Subscriber extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
     return (
       <div>
         {this.state.streams.map(stream => {
           console.log(stream);
+          console.log(currentUser)
           return (
             <OTSubscriber
               key={stream.id}
               session={this.sessionHelper.session}
               stream={stream}
+              properties={{name: currentUser.currentUser}}
             />
           );
         })}
@@ -44,4 +49,11 @@ class Subscriber extends React.Component {
   }
 }
 
-export default Subscriber;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.session.currentUser,
+    token: state.session.token
+  };
+};
+
+export default connect(mapStateToProps, null)(Subscriber);
