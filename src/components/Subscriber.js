@@ -13,11 +13,14 @@ class Subscriber extends React.Component {
 
     // This fetch will activate a lambda function which returns a sessionId and is then set in our state.
 
+<<<<<<< HEAD
     // fetch('/.netlify/functions/tokbox')
     //  .then(response => response.json())
     //  .then(json => this.setState({sessionId: json.payload}));
 
 
+=======
+>>>>>>> 1ec2d6c86498f1402cddc63cb6c9ade23058101e
     this.sessionHelper = createSession({
       apiKey: '46086882',
       sessionId: '2_MX40NjA4Njg4Mn5-MTUyMTkyNjUwMjA2MX5FL1JpeDdubzFqVnhXMG0zOGV2cmUyTDZ-fg',
