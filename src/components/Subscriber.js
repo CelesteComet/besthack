@@ -5,11 +5,19 @@ class Subscriber extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { streams: [] };
+    this.state = { sessionId: "", streams: [] };
 
   }
 
   componentWillMount() {
+
+    // This fetch will activate a lambda function which returns a sessionId and is then set in our state.
+
+    fetch('/.netlify/functions/tokbox')
+     .then(response => response.json())
+     .then(json => this.setState({sessionId: json.payload}));
+
+
     this.sessionHelper = createSession({
       apiKey: '46086882',
       sessionId: '2_MX40NjA4Njg4Mn5-MTUyMTkyNjUwMjA2MX5FL1JpeDdubzFqVnhXMG0zOGV2cmUyTDZ-fg',
@@ -21,7 +29,7 @@ class Subscriber extends React.Component {
       name: 'Bruce'
     };
   }
- 
+
   componentWillUnmount() {
     this.sessionHelper.disconnect();
   }
