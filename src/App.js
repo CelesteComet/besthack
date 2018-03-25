@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
 // Import our components:
 import VideoBox from './components/VideoBox';
 import ChatBox from './components/ChatBox';
+import Login from './components/Login';
 // ------------
 
 class LambdaDemo extends Component {
@@ -33,13 +35,23 @@ class LambdaDemo extends Component {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { alias: "" };
+  }
+
+  setAlias(alias) {
+    this.setState({alias});
+  }
+
   render() {
     return (
       <div className="App">
-        <LambdaDemo/>
+        <Login setAlias={alias => this.setAlias(alias)} alias={this.state.alias} />
+        <LambdaDemo alias={this.state.alias} />
         <div className="App2">
-          <VideoBox />
-          <ChatBox />
+          <VideoBox alias={this.state.alias} />
+          <ChatBox alias={this.state.alias} />
         </div>
       </div>
     );
