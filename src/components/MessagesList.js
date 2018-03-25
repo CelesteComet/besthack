@@ -4,7 +4,7 @@ export default class MessagesList extends React.Component {
   render() {
     return(
       <div className="chat-messages">
-        Messages
+        <h3>Messages</h3>
       </div>
     );
   }

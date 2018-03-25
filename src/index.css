@@ -54,3 +54,19 @@ html {
 html, body, #root, .App {
   min-height: 100vh;
 }
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
