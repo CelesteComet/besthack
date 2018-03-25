@@ -21,6 +21,20 @@ class Subscriber extends React.Component {
 
   renderSpeaker() {
     console.log("render speaker");
+    if (this.props.currentUser !== "host") {
+      for (let i = 0; i < this.state.streams.length; i++) {
+        if (this.state.streams[i].name === "host") {
+          return (
+            <OTSubscriber
+              key={this.state.streams[i].id}
+              session={this.sessionHelper.session}
+              stream={this.state.streams[i]}
+              properties={{name: this.state.streams[i].name}}
+            />
+          );
+        }
+      }
+    }
     for (let i = 0; i < this.state.streams.length; i++) {
       if (this.state.streams[i].name === this.props.speaker) {
         return (
