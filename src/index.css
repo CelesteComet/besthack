@@ -75,8 +75,16 @@ body {
   height: 400px;
   width: 600px;
   margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .name-entry div {
   margin: 0 auto;
+}
+
+.townhall-about{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
