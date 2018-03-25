@@ -117,11 +117,9 @@ class VideoBox extends React.Component {
   //   }
   }
 
-  render() {
-    const queue = Object.values(this.state.queue);
-    const { host, currentUser } = this.props;
-    return(
-      <div className="video-box">
+  renderVideo() {
+    if (this.isHost()) { // i am a host
+      return (
         <div className="main-video">
           {this.renderPublisher()};
           <Draggable bounds="parent">
@@ -129,9 +127,34 @@ class VideoBox extends React.Component {
               <Subscriber />
             </div>
           </Draggable>
-          {/* <Publisher />
-          {this.renderPopUp()} */}
         </div>
+      );
+    } else if (this.props.currentUser === this.props.speaker) { // i am a speaker
+      return (
+        <div className="main-video">
+          <Subscriber />
+          <Draggable bounds="parent">
+            <div className="popup-video">
+              {this.renderPublisher()}
+            </div>
+          </Draggable>
+        </div>
+      );
+    } else { // i am just a viewer
+      return (
+        <div className="main-video">
+          <Subscriber />
+        </div>
+      );
+    }
+  }
+
+  render() {
+    const queue = Object.values(this.state.queue);
+    const { host, currentUser } = this.props;
+    return(
+      <div className="video-box">
+        {this.renderVideo()}
         {this.renderQuestionSection()}
         <p>Queue (Total {queue.length})</p>
         <ul className="queue">
