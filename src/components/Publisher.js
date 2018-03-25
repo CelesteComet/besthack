@@ -53,7 +53,7 @@ class Publisher extends React.Component {
       <div className="publisher-container">
         <div className="video-buttons">
           <button onClick={this.handleClick}> Toggle Video </button>
-          <button onClick={this.endCall}> End Call </button>
+          <button style={{backgroundColor: 'red'}} onClick={this.endCall}> End Call </button>
         </div>
         <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
       </div>
