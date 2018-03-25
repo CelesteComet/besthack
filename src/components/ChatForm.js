@@ -3,6 +3,7 @@ import {createSession} from 'opentok-react';
 import {createMessage} from '../frontend/actions/messages_actions';
 import { connect } from 'react-redux';
 
+
 class ChatForm extends React.Component {
   state = {
     value: ''
@@ -20,10 +21,6 @@ class ChatForm extends React.Component {
     this.sessionHelper.session.on('signal:msg', function(event) {
       // console.log('receive signal');
       // console.log(event);
-    });
-
-    this.sessionHelper.session.on('signal:speakerChange', function(event) {
-      
     });
   }
 

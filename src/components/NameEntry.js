@@ -38,7 +38,6 @@ class NameEntry extends Component {
           <input type='text' onChange={this.handleChange} />
           <button>Enter Name</button>
         </div>
-        <br/>
 
         <div className="townhall-about">
           <img src="https://res.cloudinary.com/dbtepon6n/image/upload/c_scale,w_189/v1521964232/TownHall.svg" alt="main-logo" />
