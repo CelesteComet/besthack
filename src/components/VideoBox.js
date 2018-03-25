@@ -46,10 +46,11 @@ class VideoBox extends React.Component {
   }
 
   updateSpeaker(nameId) {
+    if (!this.isHost()) return; // Will not do anything if NOT a host
+
     // Update Speaker in the backend: (Bruce)
     const { dispatch } = this.props;
     dispatch(updateSpeaker(nameId));
-
 
     // Send signal to other users to update redux store after we update speaker in the backend:
     this.sessionHelper.session.signal({
@@ -60,10 +61,17 @@ class VideoBox extends React.Component {
         console.log('Error sending signal:', error.name, error.message);
       }
     });
+
+    // Dequeue:
+    firebase.database().ref(`queue/${this.props.currentUser}`).remove();
+  }
+
+  isHost() { // To check if a user is the host of this room session:
+    return (this.props.host === this.props.currentUser);
   }
 
   renderQuestionSection() {
-    const userToken = 10;
+    if (this.isHost()) return null; // dont render this if user is a host
     if (this.state.inQueue) {// already in the queue
       return <div className="queue-wait-text"> You are in the Question Queue</div>;
     } else {
@@ -79,9 +87,6 @@ class VideoBox extends React.Component {
   render() {
     const queue = Object.values(this.state.queue);
     const { host, currentUser } = this.props;
-    if ( host === currentUser) {
-      this.renderQuestionSection = () => {};
-    }
     return(
       <div className="video-box">
         <div className="main-video">
