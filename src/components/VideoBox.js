@@ -85,7 +85,7 @@ class VideoBox extends React.Component {
       });
       return (
         <div className="queue-wait-text">
-          You are position {position} in the Queue
+          You are position {position} in the queue
         </div>
       );
     } else {
@@ -156,18 +156,20 @@ class VideoBox extends React.Component {
       <div className="video-box">
         {this.renderVideo()}
         {this.renderQuestionSection()}
-        <p>Queue (Total {queue.length})</p>
-        <ul className="queue">
-          {queue.slice(0,12).map((user, idx) => {
-            const timeAgo = moment.unix(user.time).fromNow();
-            return (
-              <li key={idx} className="queue-item"
-                onClick={(e) => this.updateSpeaker(user.name)}>
-                {user.name} ({timeAgo})
-              </li>
-            );
-          })}
-        </ul>
+        <div className="queue__wrapper">
+          <p>Queue (Total {queue.length})</p>
+          <ul className="queue">
+            {queue.slice(0,12).map((user, idx) => {
+              const timeAgo = moment.unix(user.time).fromNow();
+              return (
+                <li key={idx} className="queue-item"
+                  onClick={(e) => this.updateSpeaker(user.name)}>
+                  {user.name} ({timeAgo})
+                </li>
+              );
+            })}
+          </ul>
+      </div>
       </div>
     );
   }
