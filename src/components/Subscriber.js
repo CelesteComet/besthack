@@ -40,7 +40,7 @@ class Subscriber extends React.Component {
               key={stream.id}
               session={this.sessionHelper.session}
               stream={stream}
-              properties={name: currentUser.currentUser}
+              properties={{name: currentUser.currentUser}}
             />
           );
         })}
