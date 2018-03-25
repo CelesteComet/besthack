@@ -37,8 +37,8 @@ class NameEntry extends Component {
         <br/>
 
         <div className="townhall-about">
-          <img src={require("../images/TownHall.svg")} height="200px" alt="main-logo" />
-          TownHall is a multi-purpose video streaming application. 
+          <img src="http://res.cloudinary.com/dbtepon6n/image/upload/c_scale,w_189/v1521964232/TownHall.svg" alt="main-logo" />
+          <p> TownHall is a multi-purpose video streaming application. </p>
         </div>
 
       </form>
