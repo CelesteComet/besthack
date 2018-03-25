@@ -36,7 +36,7 @@ class Subscriber extends React.Component {
 
   render() {
     return (
-      <div className="popup-video">
+      <div>
         {this.state.streams.map(stream => {
           return (
             <OTSubscriber

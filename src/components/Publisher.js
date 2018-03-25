@@ -34,7 +34,7 @@ class Publisher extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="publisher-container">
         <OTPublisher session={this.sessionHelper.session} properties={this.properties} />
       </div>
     );
