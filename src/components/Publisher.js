@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { OTSession, OTPublisher, OTStreams, OTSubscriber, createSession} from 'opentok-react';
 
 class Publisher extends React.Component {
@@ -8,7 +9,7 @@ class Publisher extends React.Component {
     this.state = {
       streams: [],
       properties: {
-        name: 'Bruce',
+        name: props.currentUser,
         audioFallbackEnabled: false,
         showControls: false,
         publishVideo: true
@@ -17,7 +18,6 @@ class Publisher extends React.Component {
   }
 
   componentWillMount() {
-
     this.sessionHelper = createSession({
       apiKey: '46086882',
       sessionId: '2_MX40NjA4Njg4Mn5-MTUyMTkyNjUwMjA2MX5FL1JpeDdubzFqVnhXMG0zOGV2cmUyTDZ-fg',
@@ -33,9 +33,8 @@ class Publisher extends React.Component {
 
   handleClick = (e) => {
     e.preventDefault();
-
     let properties = {...this.state.properties};
-    let bool = (properties.publishVideo === false)? true: false;
+    let bool = (properties.publishVideo === false) ? true : false;
     properties.publishVideo = bool;
     this.setState({properties});
   }
@@ -45,25 +44,22 @@ class Publisher extends React.Component {
     this.sessionHelper.disconnect();
   }
 
-
-
   render() {
-
-
-
     return (
       <div className="publisher-container">
         <button onClick={this.handleClick}> Toggle Video </button>
         <button onClick={this.endCall}> End Call </button>
         <OTPublisher session={this.sessionHelper.session} properties={this.state.properties} />
-
-
-
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    currentUser: state.session.currentUser
+  };
+};
 
 
 export default Publisher;
