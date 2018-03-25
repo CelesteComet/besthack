@@ -45,7 +45,7 @@ class Publisher extends React.Component {
   endCall = (e) => {
     e.preventDefault();
     this.sessionHelper.disconnect();
-  
+
   }
 
   render() {

@@ -84,6 +84,20 @@ class VideoBox extends React.Component {
     }
   }
 
+  renderPopUp() {
+    if (this.props.speaker === "") {// if no speaker is allowed, dont show the pop up
+      return null;
+    } else {
+      return (
+        <Draggable bounds="parent">
+          <div className="popup-video">
+            <Subscriber />
+          </div>
+        </Draggable>
+      );
+    }
+  }
+
   render() {
     const queue = Object.values(this.state.queue);
     const { host, currentUser } = this.props;
@@ -91,11 +105,7 @@ class VideoBox extends React.Component {
       <div className="video-box">
         <div className="main-video">
           <Publisher />
-          <Draggable bounds="parent">
-            <div className="popup-video">
-              <Subscriber />
-            </div>
-          </Draggable>
+          {this.renderPopUp()}
         </div>
         {this.renderQuestionSection()}
         <p>Queue (Total {queue.length})</p>
@@ -117,7 +127,8 @@ class VideoBox extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser,
-    host: state.host.name
+    host: state.host.name,
+    speaker: state.speaker
   };
 };
 
