@@ -1,5 +1,11 @@
 .video-box {
   grid-area: video;
+  display: grid;
+  grid-template-areas:
+    "queue vid"
+    "queue ask";
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr 85px;
   background: silver;
   width: 100%;
   height: 100vh;
@@ -8,8 +14,11 @@
 }
 
 .main-video {
+  grid-area: vid;
   padding-bottom: 56.2%;
   position: relative;
+  background: #333;
+  overflow: hidden;
 }
 
 .video-buttons {
@@ -45,13 +54,16 @@
 }
 
 .question-button {
+  grid-area: ask;
   display: inline-block;
-  margin: 30px;
-  width: 100px;
+  margin: 20px auto;
+  width: 150px;
   padding: 10px 20px;
+  color: #fff;
   cursor: pointer;
   background: #00A1E4;
   border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.5);
   transition: all 0.2s ease-in-out;
 }
 
@@ -62,9 +74,22 @@
 }
 
 .queue-wait-text {
+  grid: ask;
   padding: 30px;
   color: #004968;
   display: inline;
+}
+
+.queue__wrapper {
+  grid-area: queue;
+  overflow: hidden;
+  background: #222;
+  color: #fff;
+  padding: 20px;
+}
+
+.queue__wrapper p {
+  font-weight: 700;
 }
 
 .queue {
@@ -74,6 +99,9 @@
   align-items: flex-start;
   flex-wrap: wrap;
   transition: all 0.3s ease-in-out;
+  max-height: 25vh;
+  overflow-y: scroll;
+  padding: 0;
 }
 
 .queue-item {
@@ -86,5 +114,13 @@
     width: 100vw;
     height: auto;
     overflow: auto;
+    grid-template-areas: "vid" "ask" "queue";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 85px auto;
+  }
+
+  .queue__wrapper {
+    background: silver;
+    color: #000;
   }
 }
