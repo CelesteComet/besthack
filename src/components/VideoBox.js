@@ -166,6 +166,9 @@ class VideoBox extends React.Component {
   render() {
     const queue = Object.values(this.state.queue);
     const { host, currentUser } = this.props;
+
+    let queueClass = this.isHost() ? 'queue short' : 'queue';
+
     return(
       <div className="video-box">
 
@@ -174,7 +177,7 @@ class VideoBox extends React.Component {
         <div className="queue__wrapper">
           {this.isHost() && <button onClick={this.handleClear}>Clear Speaker</button>}
           <p>Queue (Total {queue.length})</p>
-          <ul className="queue">
+          <ul className={queueClass}>
             {queue.slice(0,12).map((user, idx) => {
               const timeAgo = moment.unix(user.time).fromNow();
               return (
