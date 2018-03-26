@@ -15,6 +15,7 @@ class VideoBox extends React.Component {
     super();
     this.state = { queue: {}, inQueue: false, streams: []};
     this.renderPublisher = this.renderPublisher.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
 
   componentWillMount() {
@@ -157,21 +158,28 @@ class VideoBox extends React.Component {
     }
   }
 
+  handleClear() {
+    const { dispatch } = this.props;
+    dispatch(updateSpeaker(""));
+  }
+
   render() {
     const queue = Object.values(this.state.queue);
     const { host, currentUser } = this.props;
     return(
       <div className="video-box">
+
         {this.renderVideo()}
         {this.renderQuestionSection()}
         <div className="queue__wrapper">
+          <button onClick={this.handleClear}>Clear Speaker</button>
           <p>Queue (Total {queue.length})</p>
           <ul className="queue">
             {queue.slice(0,12).map((user, idx) => {
               const timeAgo = moment.unix(user.time).fromNow();
               return (
                 <li key={idx} className="queue-item"
-                  onClick={(e) => this.updateSpeaker(user.name)}>
+                  onClick={(e) => this.updateSpeaker(user)}>
                   {user.name} ({timeAgo})
                 </li>
               );

@@ -1,11 +1,12 @@
 # VidAMA
 
-### [AMA has never been easier.](https://github.com/CelesteComet/besthack) 
+### [AMA has never been easier.](https://github.com/CelesteComet/besthack)
 
 Collaborative video conferencing and audience participation at the touch of the button.
 
-![VidAMA](./docs/VidAMA.png "VidAMA Logo")
+<!-- ![VidAMA](./docs/VidAMA.png "VidAMA Logo") -->
 
+![VidAMA](./docs/VidAMA.gif "VidAMA gif")
 ## Features
 
 Capture the essence of Reddit AMA and TedX on live video!
@@ -55,7 +56,7 @@ handleSubmit = (e) => {
 
 ### Netlify
 * Lambdas, used to abstract away interaction with API keys for security
-* Automatic deployment and serverless backend 
+* Automatic deployment and serverless backend
 
 ```javascript
 // Lambda functions called using RESTful API endpoints.
@@ -92,7 +93,7 @@ export function handler(event, context, callback) {
 ```javascript
 // messages_api_util.js
 
-export const createMessage = (authorName, body) => 
+export const createMessage = (authorName, body) =>
   $.ajax({
     url: "https://data.absolve11.hasura-app.io/v1/query",
     contentType: "application/json",
@@ -112,4 +113,3 @@ export const createMessage = (authorName, body) =>
     dataType: "json"
   });
 ```
-
