@@ -4,9 +4,9 @@
 
 Collaborative video conferencing and audience participation at the touch of the button.
 
-<!-- ![VidAMA](./docs/VidAMA.png "VidAMA Logo") -->
+![VidAMA](./docs/VidAMA.png "VidAMA Logo")
 
-![VidAMA](http://g.recordit.co/f6BZBoW0Vm.gif)
+![VidAMA](http://g.recordit.co/f6BZBoW0Vm.gif?sanitize=true)
 ## Features
 
 Capture the essence of Reddit AMA and TedX on live video!
