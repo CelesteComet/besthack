@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {OTPublisher, createSession, OTSubscriber} from 'opentok-react';
-import callEndIcon from '../images/icon-call-end.svg';
-import vidIcon from '../images/icon-video.svg';
-import vidOffIcon from '../images/icon-video-off.svg';
 
 class Publisher extends React.Component {
 
@@ -48,8 +45,8 @@ class Publisher extends React.Component {
 
   endCall = (e) => {
     e.preventDefault();
-    // this.sessionHelper.disconnect();
-    this.sessionHelper.session.unpublish();
+    this.sessionHelper.disconnect();
+    // this.sessionHelper.session.uns();
 
   }
 
@@ -93,19 +90,11 @@ class Publisher extends React.Component {
   }
 
   render() {
-    let videoStatus = this.state.properties.publishVideo;
-    let videoToggle = videoStatus ? vidIcon : vidOffIcon;
     return (
       <div className="publisher-container">
         <div className="video-buttons">
-          <button onClick={this.handleClick}>
-            <img src={videoToggle} aria-label="Toggle Video" />
-          </button>
-          <button
-            style={{backgroundColor: 'red'}}
-            onClick={this.endCall}>
-            <img src={callEndIcon} aria-label="End Call" />
-          </button>
+          <button onClick={this.handleClick}> Toggle Video </button>
+          <button style={{backgroundColor: 'red'}} onClick={this.endCall}> End Call </button>
         </div>
         {this.renderHost()}
       </div>

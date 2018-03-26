@@ -172,7 +172,7 @@ class VideoBox extends React.Component {
         {this.renderVideo()}
         {this.renderQuestionSection()}
         <div className="queue__wrapper">
-          <button onClick={this.handleClear}>Clear Speaker</button>
+          {this.isHost() && <button onClick={this.handleClear}>Clear Speaker</button>}
           <p>Queue (Total {queue.length})</p>
           <ul className="queue">
             {queue.slice(0,12).map((user, idx) => {
