@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {OTPublisher, createSession, OTSubscriber} from 'opentok-react';
+import { updateSpeaker } from '../frontend/actions/speakers_actions';
 
 class Publisher extends React.Component {
 
@@ -45,7 +46,8 @@ class Publisher extends React.Component {
 
   endCall = (e) => {
     e.preventDefault();
-    this.sessionHelper.disconnect();
+    const { dispatch } = this.props;
+    dispatch(updateSpeaker(""));
 
   }
 
@@ -110,5 +112,11 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  };
+};
 
-export default connect(mapStateToProps, null)(Publisher);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Publisher);
