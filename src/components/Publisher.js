@@ -48,6 +48,8 @@ class Publisher extends React.Component {
     e.preventDefault();
     const { dispatch } = this.props;
     dispatch(updateSpeaker(""));
+    this.sessionHelper.disconnect();
+    // this.sessionHelper.session.uns();
 
   }
 
