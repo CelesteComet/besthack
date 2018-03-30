@@ -95,6 +95,10 @@
   overflow: hidden;
 }
 
+.queue__wrapper > button {
+  margin-bottom: 1rem;
+}
+
 .queue__wrapper p {
   font-weight: 700;
 }
@@ -109,6 +113,10 @@
   max-height: none;
   overflow-y: scroll;
   padding: 0;
+}
+
+.short {
+  height: calc(100vh - 140px);
 }
 
 .queue-item {
